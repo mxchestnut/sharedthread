@@ -68,7 +68,7 @@ These files are safe to commit:
 - ✅ Only in ignored files
 
 ### API Keys
-- RESEND_API_KEY: `re_CitobSZX_QJKFFD1GygCesDDix3a23aH8`
+- RESEND_API_KEY: `re_********` (redacted)
 - NEXT_PUBLIC_SENTRY_DSN: Sentry error tracking
 - ✅ Only in ignored files
 
