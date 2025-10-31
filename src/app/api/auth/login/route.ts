@@ -94,7 +94,23 @@ export async function POST(request: NextRequest) {
     return response;
 
   } catch (error) {
-    logError('Login error:', error);
+    // Log detailed error information
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorStack = error instanceof Error ? error.stack : undefined;
+    
+    logError('Login error:', error, {
+      errorMessage,
+      errorStack,
+      apiRoute: '/api/auth/login',
+    });
+    
+    // Also console.error for immediate visibility in logs
+    console.error('Login error details:', {
+      message: errorMessage,
+      stack: errorStack,
+      error,
+    });
+    
     return NextResponse.json<AuthResponse>({
       success: false,
       error: 'Internal server error'

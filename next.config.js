@@ -11,6 +11,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true, // Skip TypeScript errors during build for deployment
   },
+  experimental: {
+    instrumentationHook: true,
+  },
 }
 
 // Sentry configuration options
