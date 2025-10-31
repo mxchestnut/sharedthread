@@ -1,0 +1,15 @@
+:root {
+  /* Palette */
+  --color-paper: #FAF8F4;
+  --color-ink: #1C1C1C;
+  --color-secondary: #4B4B3D;
+  --color-support: #6C6C5C;
+  --color-border: #E5E2DA;
+  --color-panel: #FFFFFF;
+  --color-accent: #7C8E83;
+
+  /* Radii & spacing */
+  --radius-card: 10px;
+  --gap-sm: 12px;
+  --gap-md: 16px;
+}

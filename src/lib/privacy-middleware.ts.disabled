@@ -1,0 +1,474 @@
+import { NextRequest, NextResponse } from 'next/server';
+import crypto from 'crypto';
+import { PrivacyLogger, LogLevel, DataClassification } from './privacy-logger';
+import { GDPRComplianceManager, GDPRRight } from './gdpr-compliance';
+
+// Privacy-first middleware integration
+export class PrivacyMiddleware {
+
+  // Enhanced middleware with privacy logging
+  static async withPrivacyLogging(
+    request: NextRequest,
+    handler: (req: NextRequest) => Promise<NextResponse>
+  ): Promise<NextResponse> {
+    const startTime = Date.now();
+    const sessionId = request.cookies.get('shared-thread-session')?.value;
+    const userId = await this.extractUserId(request);
+    
+    // Privacy-aware request logging
+    await this.logger.log(
+      LogLevel.INFO,
+      'HTTP Request',
+      'user_activity',
+      {
+        method: request.method,
+        path: this.sanitizePath(request.nextUrl.pathname),
+        userAgent: this.hashUserAgent(request.headers.get('user-agent')),
+        timestamp: new Date().toISOString(),
+        sessionId: sessionId ? this.hashValue(sessionId) : null
+      },
+      DataClassification.INTERNAL,
+      userId
+    );
+
+    try {
+      // Execute the handler
+      const response = await handler(request);
+      const duration = Date.now() - startTime;
+
+      // Log successful response
+      await this.logger.log(
+        LogLevel.INFO,
+        'HTTP Response',
+        'user_activity',
+        {
+          status: response.status,
+          duration,
+          path: this.sanitizePath(request.nextUrl.pathname)
+        },
+        DataClassification.INTERNAL,
+        userId
+      );
+
+      // Add privacy headers
+      this.addPrivacyHeaders(response);
+
+      return response;
+    } catch (error) {
+      const duration = Date.now() - startTime;
+
+      // Log error (without sensitive data)
+      await this.logger.log(
+        LogLevel.ERROR,
+        'HTTP Error',
+        'system_error',
+        {
+          error: error instanceof Error ? error.message : 'Unknown error',
+          duration,
+          path: this.sanitizePath(request.nextUrl.pathname)
+        },
+        DataClassification.INTERNAL,
+        userId
+      );
+
+      throw error;
+    }
+  }
+
+  // Authentication middleware with audit trails
+  static async withAuthAudit(
+    request: NextRequest,
+    authHandler: (req: NextRequest) => Promise<{ success: boolean; userId?: string; error?: string }>
+  ): Promise<{ success: boolean; userId?: string; error?: string }> {
+    const clientIP = this.getClientIP(request);
+    const userAgent = request.headers.get('user-agent');
+    
+    try {
+      const result = await authHandler(request);
+
+      if (result.success && result.userId) {
+        // Successful authentication
+        await this.logger.createAuditEvent(
+          'authentication',
+          'login_success',
+          result.userId,
+          {
+            method: 'session_verify',
+            clientIP: this.hashIP(clientIP),
+            userAgent: this.hashUserAgent(userAgent),
+            timestamp: new Date().toISOString()
+          }
+        );
+      } else {
+        // Failed authentication
+        await this.logger.createAuditEvent(
+          'authentication',
+          'login_failure',
+          null,
+          {
+            reason: result.error || 'unknown',
+            clientIP: this.hashIP(clientIP),
+            userAgent: this.hashUserAgent(userAgent),
+            timestamp: new Date().toISOString()
+          }
+        );
+      }
+
+      return result;
+    } catch (error) {
+      // Authentication error
+      await this.logger.createAuditEvent(
+        'authentication',
+        'auth_error',
+        null,
+        {
+          error: error instanceof Error ? error.message : 'Authentication system error',
+          clientIP: this.hashIP(clientIP),
+          timestamp: new Date().toISOString()
+        }
+      );
+
+      throw error;
+    }
+  }
+
+  // Data access middleware with GDPR compliance
+  static async withDataAccessLogging<T>(
+    operation: () => Promise<T>,
+    context: {
+      userId: string;
+      operation: string;
+      dataType: string;
+      purpose: string;
+    }
+  ): Promise<T> {
+    // Log data access
+    await this.logger.log(
+      LogLevel.INFO,
+      'Data Access',
+      'data_processing',
+      {
+        operation: context.operation,
+        dataType: context.dataType,
+        purpose: context.purpose,
+        timestamp: new Date().toISOString()
+      },
+      DataClassification.PERSONAL,
+      context.userId
+    );
+
+    // Create audit event for compliance
+    await this.logger.createAuditEvent(
+      'data_access',
+      context.operation,
+      context.userId,
+      {
+        dataType: context.dataType,
+        purpose: context.purpose,
+        legalBasis: 'legitimate_interest', // Should be determined by context
+        timestamp: new Date().toISOString()
+      }
+    );
+
+    try {
+      const result = await operation();
+
+      // Log successful data access
+      await this.logger.log(
+        LogLevel.INFO,
+        'Data Access Success',
+        'data_processing',
+        {
+          operation: context.operation,
+          dataType: context.dataType
+        },
+        DataClassification.INTERNAL,
+        context.userId
+      );
+
+      return result;
+    } catch (error) {
+      // Log data access error
+      await this.logger.log(
+        LogLevel.ERROR,
+        'Data Access Error',
+        'data_processing',
+        {
+          operation: context.operation,
+          dataType: context.dataType,
+          error: error instanceof Error ? error.message : 'Unknown error'
+        },
+        DataClassification.INTERNAL,
+        context.userId
+      );
+
+      throw error;
+    }
+  }
+
+  // Security event logging
+  static async logSecurityEvent(
+    event: 'rate_limit' | 'suspicious_activity' | 'access_denied' | 'privilege_escalation',
+    request: NextRequest,
+    details: Record<string, any> = {}
+  ): Promise<void> {
+    const clientIP = this.getClientIP(request);
+    const userId = await this.extractUserId(request);
+
+    await this.logger.log(
+      LogLevel.WARN,
+      'Security Event',
+      'security',
+      {
+        event,
+        clientIP: this.hashIP(clientIP),
+        userAgent: this.hashUserAgent(request.headers.get('user-agent')),
+        path: this.sanitizePath(request.nextUrl.pathname),
+        timestamp: new Date().toISOString(),
+        ...details
+      },
+      DataClassification.SECURITY,
+      userId
+    );
+
+    // Create security audit event
+    await this.logger.createAuditEvent(
+      'security',
+      event,
+      userId,
+      {
+        severity: this.getSecuritySeverity(event),
+        clientIP: this.hashIP(clientIP),
+        details,
+        timestamp: new Date().toISOString()
+      }
+    );
+  }
+
+  // GDPR request processing middleware
+  static async processGDPRRequest(
+    userId: string,
+    email: string,
+    right: string,
+    description: string,
+    verificationData?: Record<string, any>
+  ): Promise<string> {
+    // Log GDPR request initiation
+    await this.logger.log(
+      LogLevel.INFO,
+      'GDPR Request',
+      'compliance',
+      {
+        right,
+        requestDate: new Date().toISOString()
+      },
+      DataClassification.COMPLIANCE,
+      userId
+    );
+
+    try {
+      const requestId = await GDPRComplianceManager.submitRequest(
+        userId,
+        email,
+        right as any,
+        description,
+        verificationData
+      );
+
+      // Create audit event for GDPR compliance
+      await this.logger.createAuditEvent(
+        'gdpr_compliance',
+        'request_submitted',
+        userId,
+        {
+          requestId,
+          right,
+          email: this.hashEmail(email),
+          timestamp: new Date().toISOString()
+        }
+      );
+
+      return requestId;
+    } catch (error) {
+      // Log GDPR request error
+      await this.logger.log(
+        LogLevel.ERROR,
+        'GDPR Request Error',
+        'compliance',
+        {
+          right,
+          error: error instanceof Error ? error.message : 'Unknown error'
+        },
+        DataClassification.COMPLIANCE,
+        userId
+      );
+
+      throw error;
+    }
+  }
+
+  // Privacy utility methods
+  private static async extractUserId(request: NextRequest): Promise<string | null> {
+    // Extract user ID from session, JWT, or other auth mechanism
+    // This would integrate with your existing auth system
+    const sessionCookie = request.cookies.get('shared-thread-session')?.value;
+    if (!sessionCookie) return null;
+
+    try {
+      // Implement session decoding logic here
+      // For now, return null to indicate anonymous user
+      return null;
+    } catch {
+      return null;
+    }
+  }
+
+  private static getClientIP(request: NextRequest): string {
+    return (
+      request.headers.get('x-forwarded-for')?.split(',')[0] ||
+      request.headers.get('x-real-ip') ||
+      request.ip ||
+      'unknown'
+    );
+  }
+
+  private static hashIP(ip: string): string {
+    if (ip === 'unknown') return ip;
+    
+    // Use crypto for IP hashing
+    return crypto.createHash('sha256').update(ip).digest('hex').substring(0, 8);
+  }
+
+  private static hashUserAgent(userAgent: string | null): string {
+    if (!userAgent) return 'unknown';
+    
+    return crypto.createHash('sha256').update(userAgent).digest('hex').substring(0, 8);
+  }
+
+  private static hashEmail(email: string): string {
+    return crypto.createHash('sha256').update(email).digest('hex').substring(0, 8);
+  }
+
+  private static hashValue(value: string): string {
+    return crypto.createHash('sha256').update(value).digest('hex').substring(0, 8);
+  }
+
+  private static sanitizePath(path: string): string {
+    // Remove sensitive path parameters and IDs
+    return path.replace(/\/[0-9a-f]{8,}/gi, '/[ID]')
+               .replace(/\/\d+/g, '/[NUM]')
+               .replace(/[?&]token=[^&]*/gi, '?token=[REDACTED]');
+  }
+
+  private static getSecuritySeverity(event: string): 'low' | 'medium' | 'high' | 'critical' {
+    const severityMap = {
+      'rate_limit': 'low',
+      'access_denied': 'medium',
+      'suspicious_activity': 'high',
+      'privilege_escalation': 'critical'
+    } as const;
+
+    return severityMap[event as keyof typeof severityMap] || 'medium';
+  }
+
+  private static addPrivacyHeaders(response: NextResponse): void {
+    // Add privacy-related headers
+    response.headers.set('X-Privacy-Policy', 'https://sharedthread.co/privacy');
+    response.headers.set('X-Data-Retention', 'See privacy policy');
+    response.headers.set('X-GDPR-Contact', 'privacy@sharedthread.co');
+  }
+}
+
+// Next.js middleware integration
+export function createPrivacyMiddleware() {
+  return async function middleware(request: NextRequest) {
+    // Skip middleware for static files
+    if (
+      request.nextUrl.pathname.startsWith('/_next/') ||
+      request.nextUrl.pathname.startsWith('/api/health') ||
+      request.nextUrl.pathname.includes('.')
+    ) {
+      return NextResponse.next();
+    }
+
+    return PrivacyMiddleware.withPrivacyLogging(request, async () => {
+      // Your existing middleware logic here
+      return NextResponse.next();
+    });
+  };
+}
+
+// Background cleanup service
+export class PrivacyCleanupService {
+  private static intervalId: NodeJS.Timeout | null = null;
+
+  static start(intervalMs: number = 24 * 60 * 60 * 1000): void {
+    if (this.intervalId) {
+      console.warn('Privacy cleanup service already running');
+      return;
+    }
+
+    this.intervalId = setInterval(async () => {
+      try {
+        console.log('Running privacy cleanup...');
+        
+        // Clean up expired logs
+        const cleanedLogs = await PrivacyLogger.performCleanup();
+        console.log(`Cleaned up ${cleanedLogs} expired log entries`);
+        
+        // Clean up expired GDPR requests
+        const cleanedRequests = await GDPRComplianceManager.cleanupExpiredRequests();
+        console.log(`Cleaned up ${cleanedRequests} expired GDPR requests`);
+        
+        // Log cleanup activity
+        await PrivacyLogger.log(
+          LogLevel.INFO,
+          'Privacy Cleanup',
+          'system_maintenance',
+          {
+            cleanedLogs,
+            cleanedRequests,
+            timestamp: new Date().toISOString()
+          },
+          DataClassification.INTERNAL
+        );
+        
+      } catch (error) {
+        console.error('Privacy cleanup failed:', error);
+        
+        // Log cleanup error
+        await PrivacyLogger.log(
+          LogLevel.ERROR,
+          'Privacy Cleanup Error',
+          'system_error',
+          {
+            error: error instanceof Error ? error.message : 'Unknown error',
+            timestamp: new Date().toISOString()
+          },
+          DataClassification.INTERNAL
+        );
+      }
+    }, intervalMs);
+
+    console.log('Privacy cleanup service started');
+  }
+
+  static stop(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+      console.log('Privacy cleanup service stopped');
+    }
+  }
+}
+
+// Export types for integration
+export type {
+  LogLevel,
+  DataClassification
+} from './privacy-logger';
+
+export type {
+  GDPRRight,
+  RequestStatus
+} from './gdpr-compliance';

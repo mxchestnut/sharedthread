@@ -1,0 +1,748 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   String   @id @default(cuid())
+  username             String   @unique
+  email                String   @unique
+  displayName          String
+  avatarUrl            String?
+  bio                  String?
+  role                 Role     @default(MEMBER)
+  emailVerified        Boolean  @default(false)
+  totpSecret           String?
+  isApproved           Boolean  @default(false)
+  agreedToTerms        Boolean  @default(false)
+  isOver18             Boolean  @default(false)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  lastActiveAt         DateTime @default(now())
+  newsletterSubscribed Boolean  @default(false)
+  subscriptionDate     DateTime?
+  reputationScore      Int      @default(50)
+  trustLevel           Int      @default(0)
+  password             String?
+  birthday             DateTime?
+  onWaitlist           Boolean  @default(false)
+  phoneNumber          String?  @unique
+  pronouns             String?
+
+  // Relations
+  memberships          CommunityMember[]
+  proposedCommunities  CommunityProposal[] @relation("CommunityProposals")
+  reviewedProposals    CommunityProposal[] @relation("CommunityReviews")
+  following            Follow[]            @relation("UserFollowing")
+  followers            Follow[]            @relation("UserFollowers")
+  moderationActions    ModerationAction[]
+  ratings              Rating[]
+  sessions             Session[]
+  strikes              Strike[]
+  works                Work[]
+  projects             Project[]
+  articles             Article[]
+  discussionPosts      DiscussionPost[]
+  discussionReplies    DiscussionReply[]
+  discussionVotes      DiscussionVote[]
+  achievements         Achievement[]
+  accounts             Account[]
+  ownedCommunities     Community[]        @relation("CommunityOwner")
+  invitesSent          CommunityInvite[]
+  comments             Comment[]
+  annotations          Annotation[]
+  annotationReplies    AnnotationReply[]
+  collections          Collection[]
+  appeals              ModerationAppeal[]
+  notifications        Notification[]
+  notificationsAuthored Notification[] @relation("NotificationActor")
+
+  @@map("users")
+}
+
+enum ModerationStatus {
+  CLEAN
+  FLAGGED
+  UNDER_APPEAL
+  OVERRIDDEN
+}
+
+enum AppealStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum AppealTargetType {
+  POST
+  REPLY
+}
+
+model ModerationAppeal {
+  id           String            @id @default(cuid())
+  targetType   AppealTargetType
+  postId       String?
+  replyId      String?
+  userId       String
+  reason       String
+  message      String?
+  status       AppealStatus      @default(PENDING)
+  staffUserId  String?
+  staffNotes   String?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  post         DiscussionPost?   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  reply        DiscussionReply?  @relation(fields: [replyId], references: [id], onDelete: Cascade)
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@map("moderation_appeals")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+  follower    User     @relation("UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
+  following   User     @relation("UserFollowers", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@map("follows")
+}
+
+model CommunityProposal {
+  id              String         @id @default(cuid())
+  proposedName    String
+  proposedSlug    String         @unique
+  description     String
+  purpose         String
+  expectedMembers Int
+  proposerId      String
+  status          ProposalStatus @default(PENDING)
+  reviewedBy      String?
+  reviewedAt      DateTime?
+  rejectionReason String?
+  approvedSlug    String?        @unique
+  communityId     String?        @unique
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  community       Community?     @relation(fields: [communityId], references: [id])
+  proposer        User           @relation("CommunityProposals", fields: [proposerId], references: [id], onDelete: Cascade)
+  reviewer        User?          @relation("CommunityReviews", fields: [reviewedBy], references: [id])
+
+  @@map("community_proposals")
+}
+
+model Community {
+  id                 String               @id @default(cuid())
+  name               String
+  description        String?
+  slug               String               @unique
+  subdomain          String               @unique
+  isPrivate          Boolean              @default(true)
+  privacyLevel       CommunityPrivacy     @default(PUBLIC)
+  isApproved         Boolean              @default(false)
+  ownerId            String
+  settings           Json                 @default("{}")
+  customDomain       String?
+  logoUrl            String?
+  primaryColor       String?
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  owner              User                 @relation("CommunityOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  invites            CommunityInvite[]
+  members            CommunityMember[]
+  proposal           CommunityProposal?
+  works              Work[]
+  discussionCategories DiscussionCategory[]
+  discussionPosts    DiscussionPost[]
+
+  @@map("communities")
+}
+
+model DiscussionCategory {
+  id          String           @id @default(cuid())
+  name        String
+  description String?
+  slug        String
+  color       String           @default("#6366f1")
+  icon        String           @default("MessageSquare")
+  position    Int              @default(0)
+  communityId String
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  community   Community        @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  posts       DiscussionPost[]
+
+  @@unique([communityId, slug])
+  @@map("discussion_categories")
+}
+
+model DiscussionPost {
+  id           String            @id @default(cuid())
+  title        String
+  content      String
+  authorId     String
+  communityId  String
+  categoryId   String
+  privacy      PostPrivacy       @default(PUBLIC)
+  isPinned     Boolean           @default(false)
+  upvotes      Int               @default(0)
+  downvotes    Int               @default(0)
+  viewCount    Int               @default(0)
+  replyCount   Int               @default(0)
+  topics       String[]          @default([])
+  citations    Json?
+  qualityScore Int?
+  hasAIFlag    Boolean           @default(false)
+  hasPlagiarismFlag Boolean      @default(false)
+  aiScore      Float?
+  plagiarismScore Float?
+  moderationStatus ModerationStatus @default(CLEAN)
+  moderationNotes String?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  author       User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  community    Community         @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  category     DiscussionCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  replies      DiscussionReply[]
+  votes        DiscussionVote[]
+  appeals      ModerationAppeal[]
+
+  @@map("discussion_posts")
+}
+
+model DiscussionReply {
+  id           String         @id @default(cuid())
+  content      String
+  authorId     String
+  postId       String
+  parentId     String?
+  citations    Json?
+  qualityScore Int?
+  isAccepted   Boolean        @default(false)
+  hasAIFlag    Boolean        @default(false)
+  hasPlagiarismFlag Boolean   @default(false)
+  aiScore      Float?
+  plagiarismScore Float?
+  moderationStatus ModerationStatus @default(CLEAN)
+  moderationNotes String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  author       User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  post         DiscussionPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  parent       DiscussionReply? @relation("ReplyReplies", fields: [parentId], references: [id])
+  replies      DiscussionReply[] @relation("ReplyReplies")
+  appeals      ModerationAppeal[]
+
+  @@map("discussion_replies")
+}
+
+model DiscussionVote {
+  id       String         @id @default(cuid())
+  userId   String
+  postId   String
+  isUpvote Boolean
+  createdAt DateTime      @default(now())
+  user     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post     DiscussionPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, postId])
+  @@map("discussion_votes")
+}
+
+model CommunityMember {
+  id          String        @id @default(cuid())
+  userId      String
+  communityId String
+  role        CommunityRole @default(MEMBER)
+  joinedAt    DateTime      @default(now())
+  community   Community     @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, communityId])
+  @@map("community_members")
+}
+
+model CommunityInvite {
+  id          String       @id @default(cuid())
+  communityId String
+  invitedBy   String
+  inviteeId   String?
+  email       String?
+  token       String       @unique
+  status      InviteStatus @default(PENDING)
+  expiresAt   DateTime
+  createdAt   DateTime     @default(now())
+  community   Community    @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  inviter     User         @relation(fields: [invitedBy], references: [id], onDelete: Cascade)
+
+  @@map("community_invites")
+}
+
+// New Project-based system models
+model Project {
+  id           String            @id @default(cuid())
+  title        String
+  description  String?
+  templateId   String?
+  authorId     String
+  status       ProjectStatus     @default(ACTIVE)
+  progress     Float             @default(0) // 0-100 percentage
+  settings     Json              @default("{}")
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  categories   ProjectCategory[]
+  articles     Article[]
+  relationships ArticleRelationship[]
+  author       User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("projects")
+}
+
+model ProjectCategory {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  slug        String
+  icon        String    @default("Folder")
+  color       String    @default("#6366f1")
+  position    Int       @default(0)
+  projectId   String
+  parentId    String?
+  settings    Json      @default("{}")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  parent      ProjectCategory? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    ProjectCategory[] @relation("CategoryHierarchy")
+  articles    Article[]
+
+  @@unique([projectId, slug])
+  @@map("project_categories")
+}
+
+model Article {
+  id                String                @id @default(cuid())
+  title             String
+  content           Json
+  excerpt           String?
+  slug              String
+  authorId          String
+  projectId         String
+  categoryId        String?
+  templatePromptId  String? // Links to template prompt that created this
+  status            ArticleStatus         @default(DRAFT)
+  visibility        Visibility            @default(PRIVATE)
+  acceptingFeedback Boolean               @default(false)
+  metadata          Json                  @default("{}")
+  tags              String[]
+  position          Int                   @default(0)
+  viewCount         Int                   @default(0)
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+  publishedAt       DateTime?
+  author            User                  @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  project           Project               @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  category          ProjectCategory?      @relation(fields: [categoryId], references: [id])
+  comments          Comment[]
+  annotations       Annotation[]
+  works             Work[]
+  outgoingLinks     ArticleRelationship[] @relation("SourceArticle")
+  incomingLinks     ArticleRelationship[] @relation("TargetArticle")
+
+  @@unique([projectId, slug])
+  @@map("articles")
+}
+
+model ArticleRelationship {
+  id           String            @id @default(cuid())
+  sourceId     String
+  targetId     String
+  projectId    String
+  type         RelationshipType  @default(REFERENCES)
+  description  String?
+  metadata     Json              @default("{}")
+  createdAt    DateTime          @default(now())
+  source       Article           @relation("SourceArticle", fields: [sourceId], references: [id], onDelete: Cascade)
+  target       Article           @relation("TargetArticle", fields: [targetId], references: [id], onDelete: Cascade)
+  project      Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceId, targetId, type])
+  @@map("article_relationships")
+}
+
+model Work {
+  id                     String           @id @default(cuid())
+  title                  String
+  content                Json
+  excerpt                String?
+  authorId               String
+  articleId              String? // Optional link to Article for project-based works
+  status                 WorkStatus       @default(DRAFT)
+  visibility             Visibility       @default(PRIVATE)
+  publishedToCommunities String[]
+  publishedToPublic      Boolean          @default(false)
+  publishedToFollowers   Boolean          @default(false)
+  acceptingFeedback      Boolean          @default(false)
+  betaEndDate            DateTime?
+  viewCount              Int              @default(0)
+  rating                 Float?
+  tags                   String[]
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  publishedAt            DateTime?
+  communityId            String?
+  annotations            Annotation[]
+  collections            CollectionItem[]
+  comments               Comment[]
+  ratings                Rating[]
+  author                 User             @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  community              Community?       @relation(fields: [communityId], references: [id])
+  article                Article?         @relation(fields: [articleId], references: [id])
+
+  @@map("works")
+}
+
+model Comment {
+  id        String    @id @default(cuid())
+  content   String
+  workId    String?   // Optional - for comments on published works
+  articleId String?   // Optional - for comments on articles
+  authorId  String
+  parentId  String?
+  isPublic  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies   Comment[] @relation("CommentReplies")
+  work      Work?     @relation(fields: [workId], references: [id], onDelete: Cascade)
+  article   Article?  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model Rating {
+  id        String   @id @default(cuid())
+  value     Int
+  review    String?
+  workId    String
+  userId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  work      Work     @relation(fields: [workId], references: [id], onDelete: Cascade)
+
+  @@unique([workId, userId])
+  @@map("ratings")
+}
+
+model Annotation {
+  id             String            @id @default(cuid())
+  workId         String?           // Optional - for annotations on published works
+  articleId      String?           // Optional - for annotations on articles
+  userId         String
+  paragraphIndex Int
+  startOffset    Int?
+  endOffset      Int?
+  content        String
+  type           AnnotationType    @default(FEEDBACK)
+  isResolved     Boolean           @default(false)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  replies        AnnotationReply[]
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  work           Work?             @relation(fields: [workId], references: [id], onDelete: Cascade)
+  article        Article?          @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@map("annotations")
+}
+
+model AnnotationReply {
+  id           String     @id @default(cuid())
+  annotationId String
+  userId       String
+  content      String
+  createdAt    DateTime   @default(now())
+  annotation   Annotation @relation(fields: [annotationId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("annotation_replies")
+}
+
+model Collection {
+  id          String           @id @default(cuid())
+  name        String
+  description String?
+  ownerId     String
+  isPublic    Boolean          @default(true)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  items       CollectionItem[]
+  owner       User             @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@map("collections")
+}
+
+model CollectionItem {
+  id           String     @id @default(cuid())
+  collectionId String
+  workId       String
+  addedAt      DateTime   @default(now())
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  work         Work       @relation(fields: [workId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, workId])
+  @@map("collection_items")
+}
+
+model Strike {
+  id          String   @id @default(cuid())
+  userId      String
+  type        String
+  severity    String
+  description String
+  evidence    String[]
+  issuedBy    String
+  issuedAt    DateTime @default(now())
+  expiresAt   DateTime
+  appealed    Boolean  @default(false)
+  status      String   @default("active")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("strikes")
+}
+
+model Achievement {
+  id              String   @id @default(cuid())
+  userId          String
+  type            String
+  title           String
+  description     String
+  reputationBonus Int      @default(0)
+  earnedAt        DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("achievements")
+}
+
+model ModerationAction {
+  id          String   @id @default(cuid())
+  moderatorId String
+  targetType  String
+  targetId    String
+  action      String
+  reason      String?
+  createdAt   DateTime @default(now())
+  moderator   User     @relation(fields: [moderatorId], references: [id], onDelete: Cascade)
+
+  @@map("moderation_actions")
+}
+
+model Newsletter {
+  id        String    @id @default(cuid())
+  subject   String
+  content   String
+  status    String    @default("draft")
+  sentAt    DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("newsletters")
+}
+
+model PrivacyLog {
+  id             String   @id @default(cuid())
+  userId         String?
+  level          String
+  message        String
+  category       String
+  metadata       Json     @default("{}")
+  classification String
+  timestamp      DateTime @default(now())
+  anonymized     Boolean  @default(false)
+
+  @@map("privacy_logs")
+}
+
+model AuditEvent {
+  id         String   @id @default(cuid())
+  userId     String?
+  action     String
+  resource   String
+  resourceId String?
+  oldValues  Json?
+  newValues  Json?
+  metadata   Json     @default("{}")
+  ipHash     String
+  userAgent  String
+  success    Boolean  @default(true)
+  timestamp  DateTime @default(now())
+
+  @@map("audit_events")
+}
+
+model GDPRRequest {
+  id               String    @id @default(cuid())
+  userId           String
+  email            String
+  right            String
+  description      String
+  status           String    @default("pending")
+  requestDate      DateTime  @default(now())
+  processedDate    DateTime?
+  expirationDate   DateTime
+  verificationData Json?
+  responseData     Json?
+
+  @@map("gdpr_requests")
+}
+
+enum Role {
+  MEMBER
+  ADMIN
+}
+
+enum AccountStatus {
+  ACTIVE
+  WARNED
+  SUSPENDED
+  BANNED
+}
+
+enum CommunityRole {
+  MEMBER
+  MODERATOR
+  ADMIN
+}
+
+enum CommunityPrivacy {
+  PUBLIC
+  GUARDED
+  PRIVATE
+}
+
+enum InviteStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  EXPIRED
+}
+
+enum ProposalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum AnnotationType {
+  FEEDBACK
+  SUGGESTION
+  QUESTION
+  PRAISE
+}
+
+enum WorkStatus {
+  DRAFT
+  BETA
+  PUBLISHED
+  ARCHIVED
+}
+
+enum Visibility {
+  PRIVATE
+  FOLLOWERS
+  COMMUNITY
+  PUBLIC
+}
+
+enum PostPrivacy {
+  PUBLIC
+  PRIVATE
+}
+
+enum ProjectStatus {
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+  PAUSED
+}
+
+enum ArticleStatus {
+  DRAFT
+  IN_REVIEW
+  COMPLETE
+  ARCHIVED
+}
+
+enum RelationshipType {
+  REFERENCES
+  DEPENDS_ON
+  SUPPORTS
+  CONTRADICTS
+  BUILDS_ON
+  RELATED_TO
+}
+
+// Notifications
+enum NotificationType {
+  COMMENT
+  LIKE
+  FOLLOW
+  MENTION
+  WORK
+  SYSTEM
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  actorId   String?
+  type      NotificationType
+  message   String
+  link      String?
+  read      Boolean          @default(false)
+  metadata  Json?
+  createdAt DateTime         @default(now())
+
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  actor     User?            @relation("NotificationActor", fields: [actorId], references: [id])
+
+  @@index([userId, read, createdAt])
+  @@index([userId, createdAt])
+  @@map("notifications")
+}

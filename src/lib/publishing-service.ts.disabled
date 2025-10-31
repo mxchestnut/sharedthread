@@ -1,0 +1,634 @@
+import { prisma } from './prisma';
+import { 
+  Visibility, 
+  WorkStatus, 
+  PublishingOptions, 
+  WorkWithDetails, 
+  PublishingPermissions,
+  FeedFilters,
+  ActivityItem
+} from '@/types/social';
+import { reputationSystem } from './reputation-system';
+import { PrivacyLogger, LogLevel, DataClassification } from './privacy-logger';
+
+export class PublishingService {
+  
+  // ================================================================
+  // PUBLISHING PERMISSIONS & VALIDATION
+  // ================================================================
+  
+  static async getUserPublishingPermissions(userId: string): Promise<PublishingPermissions> {
+    const userReputation = await reputationSystem.getUserReputation(userId);
+    const limits = await reputationSystem.getUserLimits(userId);
+    
+    // Get user's communities where they can invite
+    const userMemberships = await prisma.communityMember.findMany({
+      where: {
+        userId,
+        role: { in: ['ADMIN', 'MODERATOR'] }
+      },
+      select: { communityId: true }
+    });
+    
+    // Count today's publications
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayPublications = await prisma.work.count({
+      where: {
+        authorId: userId,
+        publishedAt: { gte: today },
+        status: WorkStatus.PUBLISHED
+      }
+    });
+    
+    return {
+      canPublishToPublic: userReputation.trust_level >= 1,
+      canPublishToFollowers: true,
+      canCreateCommunities: userReputation.trust_level >= 1,
+      canInviteToExistingCommunities: userMemberships.map(m => m.communityId),
+      dailyPublishLimit: limits.works_per_day,
+      remainingPublishes: Math.max(0, limits.works_per_day - todayPublications),
+      requiresApproval: limits.requires_approval
+    };
+  }
+  
+  static async validatePublishingOptions(
+    userId: string, 
+    options: PublishingOptions
+  ): Promise<{ valid: boolean; errors: string[] }> {
+    const errors: string[] = [];
+    const permissions = await this.getUserPublishingPermissions(userId);
+    
+    // Check daily limits
+    if (permissions.remainingPublishes <= 0) {
+      errors.push(`Daily publishing limit reached (${permissions.dailyPublishLimit})`);
+    }
+    
+    // Check public publishing permissions
+    if (options.publishToPublic && !permissions.canPublishToPublic) {
+      errors.push('Insufficient reputation to publish publicly');
+    }
+    
+    // Check community permissions
+    for (const communityId of options.publishToCommunities) {
+      const membership = await prisma.communityMember.findUnique({
+        where: {
+          userId_communityId: {
+            userId,
+            communityId
+          }
+        }
+      });
+      
+      if (!membership) {
+        errors.push(`Not a member of community ${communityId}`);
+      }
+    }
+    
+    // Beta period validation
+    if (options.acceptingFeedback && options.betaEndDate) {
+      if (options.betaEndDate <= new Date()) {
+        errors.push('Beta end date must be in the future');
+      }
+    }
+    
+    return {
+      valid: errors.length === 0,
+      errors
+    };
+  }
+  
+  // ================================================================
+  // WORK PUBLISHING
+  // ================================================================
+  
+  static async publishWork(
+    authorId: string,
+    workData: {
+      title: string;
+      content: Record<string, unknown>;
+      excerpt?: string;
+      publishingOptions: PublishingOptions;
+    }
+  ): Promise<WorkWithDetails> {
+    // Validate publishing options
+    const validation = await this.validatePublishingOptions(authorId, workData.publishingOptions);
+    if (!validation.valid) {
+      throw new Error(`Publishing validation failed: ${validation.errors.join(', ')}`);
+    }
+    
+    // Determine primary visibility
+    const visibility = this.determineVisibility(workData.publishingOptions);
+    
+    // Create the work
+    const work = await prisma.work.create({
+      data: {
+        title: workData.title,
+        content: workData.content,
+        excerpt: workData.excerpt,
+        authorId,
+        status: WorkStatus.PUBLISHED,
+        visibility,
+        publishedToCommunities: workData.publishingOptions.publishToCommunities,
+        publishedToPublic: workData.publishingOptions.publishToPublic,
+        publishedToFollowers: workData.publishingOptions.publishToFollowers,
+        acceptingFeedback: workData.publishingOptions.acceptingFeedback,
+        betaEndDate: workData.publishingOptions.betaEndDate,
+        tags: workData.publishingOptions.tags,
+        publishedAt: new Date()
+      },
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true,
+            displayName: true,
+            avatarUrl: true
+          }
+        },
+        comments: {
+          include: {
+            author: {
+              select: {
+                username: true,
+                displayName: true,
+                avatarUrl: true
+              }
+            }
+          },
+          orderBy: { createdAt: 'desc' },
+          take: 5
+        },
+        ratings: {
+          orderBy: { createdAt: 'desc' }
+        },
+        _count: {
+          select: {
+            comments: true,
+            ratings: true
+          }
+        }
+      }
+    });
+    
+    // Update author reputation
+    await reputationSystem.updateReputation(authorId, 'work_approved');
+    
+    // Log publishing activity
+    await PrivacyLogger.log(
+      LogLevel.INFO,
+      'Work Published',
+      'user_activity',
+      {
+        workId: work.id,
+        visibility,
+        publishToPublic: workData.publishingOptions.publishToPublic,
+        publishToFollowers: workData.publishingOptions.publishToFollowers,
+        communitiesCount: workData.publishingOptions.publishToCommunities.length
+      },
+      DataClassification.INTERNAL,
+      authorId
+    );
+    
+    // Create activity feed entries
+    await this.createActivityEntries(work.id, 'work_published', authorId);
+    
+    return work as WorkWithDetails;
+  }
+  
+  private static determineVisibility(options: PublishingOptions): Visibility {
+    if (options.publishToPublic) return Visibility.PUBLIC;
+    if (options.publishToCommunities.length > 0) return Visibility.COMMUNITY;
+    if (options.publishToFollowers) return Visibility.FOLLOWERS;
+    return Visibility.PRIVATE;
+  }
+  
+  // ================================================================
+  // COMMUNITY MANAGEMENT
+  // ================================================================
+  
+  static async createCommunity(
+    ownerId: string,
+    data: {
+      name: string;
+      description?: string;
+      isPrivate?: boolean;
+      settings?: Record<string, unknown>;
+    }
+  ) {
+    const permissions = await this.getUserPublishingPermissions(ownerId);
+    if (!permissions.canCreateCommunities) {
+      throw new Error('Insufficient reputation to create communities');
+    }
+    
+    // Generate unique slug
+    const slug = await this.generateCommunitySlug(data.name);
+    
+    const community = await prisma.community.create({
+      data: {
+        name: data.name,
+        description: data.description,
+        slug,
+        isPrivate: data.isPrivate ?? true,
+        ownerId,
+        settings: data.settings ?? {}
+      },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            username: true,
+            displayName: true,
+            avatarUrl: true
+          }
+        },
+        _count: {
+          select: {
+            members: true,
+            works: true
+          }
+        }
+      }
+    });
+    
+    // Add owner as admin member
+    await prisma.communityMember.create({
+      data: {
+        userId: ownerId,
+        communityId: community.id,
+        role: 'ADMIN'
+      }
+    });
+    
+    // Log community creation
+    await PrivacyLogger.log(
+      LogLevel.INFO,
+      'Community Created',
+      'user_activity',
+      {
+        communityId: community.id,
+        communityName: community.name,
+        isPrivate: community.isPrivate
+      },
+      DataClassification.INTERNAL,
+      ownerId
+    );
+    
+    return community;
+  }
+  
+  static async inviteToCommunity(
+    inviterId: string,
+    communityId: string,
+    data: {
+      email?: string;
+      userId?: string;
+      message?: string;
+    }
+  ) {
+    // Check if inviter has permission
+    const membership = await prisma.communityMember.findUnique({
+      where: {
+        userId_communityId: {
+          userId: inviterId,
+          communityId
+        }
+      }
+    });
+    
+    if (!membership || membership.role === 'MEMBER') {
+      throw new Error('Insufficient permissions to invite to this community');
+    }
+    
+    // Generate invitation token
+    const token = this.generateInviteToken();
+    const expiresAt = new Date();
+    expiresAt.setDate(expiresAt.getDate() + 7); // 7 days expiry
+    
+    const invite = await prisma.communityInvite.create({
+      data: {
+        communityId,
+        invitedBy: inviterId,
+        inviteeId: data.userId,
+        email: data.email,
+        token,
+        expiresAt
+      },
+      include: {
+        community: {
+          select: {
+            name: true,
+            slug: true
+          }
+        },
+        inviter: {
+          select: {
+            username: true,
+            displayName: true
+          }
+        }
+      }
+    });
+    
+    // TODO: Send email notification if email provided
+    
+    return invite;
+  }
+  
+  // ================================================================
+  // FOLLOW SYSTEM
+  // ================================================================
+  
+  static async followUser(followerId: string, targetUserId: string) {
+    if (followerId === targetUserId) {
+      throw new Error('Cannot follow yourself');
+    }
+    
+    // Check if already following
+    const existing = await prisma.follow.findUnique({
+      where: {
+        followerId_followingId: {
+          followerId,
+          followingId: targetUserId
+        }
+      }
+    });
+    
+    if (existing) {
+      throw new Error('Already following this user');
+    }
+    
+    const follow = await prisma.follow.create({
+      data: {
+        followerId,
+        followingId: targetUserId
+      }
+    });
+    
+    // Update reputation for social engagement
+    await reputationSystem.updateReputation(followerId, 'peer_endorsement');
+    
+    // Log follow activity
+    await PrivacyLogger.log(
+      LogLevel.INFO,
+      'User Followed',
+      'user_activity',
+      {
+        targetUserId,
+        action: 'follow'
+      },
+      DataClassification.INTERNAL,
+      followerId
+    );
+    
+    return follow;
+  }
+  
+  static async unfollowUser(followerId: string, targetUserId: string) {
+    const result = await prisma.follow.deleteMany({
+      where: {
+        followerId,
+        followingId: targetUserId
+      }
+    });
+    
+    if (result.count === 0) {
+      throw new Error('Not following this user');
+    }
+    
+    // Log unfollow activity
+    await PrivacyLogger.log(
+      LogLevel.INFO,
+      'User Unfollowed',
+      'user_activity',
+      {
+        targetUserId,
+        action: 'unfollow'
+      },
+      DataClassification.INTERNAL,
+      followerId
+    );
+    
+    return result;
+  }
+  
+  // ================================================================
+  // FEED GENERATION
+  // ================================================================
+  
+  static async getUserFeed(
+    userId: string,
+    filters: FeedFilters = {},
+    page: number = 1,
+    limit: number = 20
+  ): Promise<WorkWithDetails[]> {
+    // Build the where clause based on user access
+    const whereClause = await this.buildFeedWhereClause(userId, filters);
+    
+    const works = await prisma.work.findMany({
+      where: whereClause,
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true,
+            displayName: true,
+            avatarUrl: true
+          }
+        },
+        community: {
+          select: {
+            id: true,
+            name: true,
+            slug: true
+          }
+        },
+        comments: {
+          include: {
+            author: {
+              select: {
+                username: true,
+                displayName: true,
+                avatarUrl: true
+              }
+            }
+          },
+          orderBy: { createdAt: 'desc' },
+          take: 3
+        },
+        ratings: {
+          orderBy: { createdAt: 'desc' }
+        },
+        _count: {
+          select: {
+            comments: true,
+            ratings: true
+          }
+        }
+      },
+      orderBy: { publishedAt: 'desc' },
+      skip: (page - 1) * limit,
+      take: limit
+    });
+    
+    return works as WorkWithDetails[];
+  }
+  
+  private static async buildFeedWhereClause(userId: string, filters: FeedFilters) {
+    // Get user's communities
+    const userCommunities = await prisma.communityMember.findMany({
+      where: { userId },
+      select: { communityId: true }
+    });
+    const communityIds = userCommunities.map(m => m.communityId);
+    
+    // Get users the current user follows
+    const following = await prisma.follow.findMany({
+      where: { followerId: userId },
+      select: { followingId: true }
+    });
+    const followingIds = following.map(f => f.followingId);
+    
+    const baseWhere: any = {
+      status: filters.status || [WorkStatus.PUBLISHED],
+      OR: [
+        // Public works
+        { 
+          visibility: Visibility.PUBLIC,
+          publishedToPublic: true
+        },
+        // Works from followed users
+        { 
+          visibility: Visibility.FOLLOWERS,
+          publishedToFollowers: true,
+          authorId: { in: followingIds }
+        },
+        // Community works user has access to
+        { 
+          visibility: Visibility.COMMUNITY,
+          publishedToCommunities: { hasSome: communityIds }
+        },
+        // User's own works
+        { authorId: userId }
+      ]
+    };
+    
+    // Apply additional filters
+    if (filters.tags?.length) {
+      baseWhere.tags = { hasSome: filters.tags };
+    }
+    
+    if (filters.communities?.length) {
+      baseWhere.publishedToCommunities = { hasSome: filters.communities };
+    }
+    
+    if (filters.followingOnly) {
+      baseWhere.authorId = { in: [...followingIds, userId] };
+    }
+    
+    if (filters.timeRange) {
+      baseWhere.publishedAt = {
+        gte: filters.timeRange.from,
+        lte: filters.timeRange.to
+      };
+    }
+    
+    return baseWhere;
+  }
+  
+  // ================================================================
+  // UTILITY METHODS
+  // ================================================================
+  
+  private static async generateCommunitySlug(name: string): Promise<string> {
+    const baseSlug = name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    
+    let slug = baseSlug;
+    let counter = 1;
+    
+    while (await prisma.community.findUnique({ where: { slug } })) {
+      slug = `${baseSlug}-${counter}`;
+      counter++;
+    }
+    
+    return slug;
+  }
+  
+  private static generateInviteToken(): string {
+    return Math.random().toString(36).substring(2) + Date.now().toString(36);
+  }
+  
+  private static async createActivityEntries(
+    workId: string,
+    type: 'work_published' | 'work_updated',
+    actorId: string
+  ) {
+    // This would typically be stored in a separate activity feed table
+    // For now, just log the activity
+    await PrivacyLogger.log(
+      LogLevel.INFO,
+      'Activity Created',
+      'user_activity',
+      {
+        type,
+        workId,
+        actorId
+      },
+      DataClassification.INTERNAL,
+      actorId
+    );
+  }
+  
+  // ================================================================
+  // ACCESS CONTROL HELPERS
+  // ================================================================
+  
+  static async canUserViewWork(userId: string, workId: string): Promise<boolean> {
+    const work = await prisma.work.findUnique({
+      where: { id: workId },
+      include: {
+        author: { select: { id: true } }
+      }
+    });
+    
+    if (!work) return false;
+    
+    // Author can always view their own work
+    if (work.authorId === userId) return true;
+    
+    // Check visibility rules
+    switch (work.visibility) {
+      case Visibility.PUBLIC:
+        return work.publishedToPublic;
+        
+      case Visibility.FOLLOWERS:
+        if (!work.publishedToFollowers) return false;
+        // Check if user follows the author
+        const isFollowing = await prisma.follow.findUnique({
+          where: {
+            followerId_followingId: {
+              followerId: userId,
+              followingId: work.authorId
+            }
+          }
+        });
+        return !!isFollowing;
+        
+      case Visibility.COMMUNITY:
+        // Check if user is member of any communities this work is published to
+        const userCommunities = await prisma.communityMember.findMany({
+          where: { userId },
+          select: { communityId: true }
+        });
+        const userCommunityIds = userCommunities.map(m => m.communityId);
+        return work.publishedToCommunities.some(id => userCommunityIds.includes(id));
+        
+      case Visibility.PRIVATE:
+      default:
+        return false;
+    }
+  }
+}

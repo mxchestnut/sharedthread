@@ -1,0 +1,77 @@
+[
+  {
+    "name": "DATABASE_URL",
+    "value": "postgresql://YOUR_DB_USER:YOUR_DB_PASSWORD@sharedthread-db.postgres.database.azure.com/sharedthread?sslmode=require",
+    "slotSetting": false
+  },
+  {
+    "name": "DOMAIN",
+    "value": "sharedthread.co",
+    "slotSetting": false
+  },
+  {
+    "name": "NEXTAUTH_URL",
+    "value": "https://sharedthread.co",
+    "slotSetting": false
+  },
+  {
+    "name": "JWT_SECRET",
+    "value": "REPLACE_WITH_64_CHAR_CRYPTOGRAPHIC_SECRET",
+    "slotSetting": false
+  },
+  {
+    "name": "NEXTAUTH_SECRET",
+    "value": "REPLACE_WITH_NEXTAUTH_SECRET",
+    "slotSetting": false
+  },
+  {
+    "name": "NODE_ENV",
+    "value": "production",
+    "slotSetting": false
+  },
+  {
+    "name": "RESEND_API_KEY",
+    "value": "re_YOUR_RESEND_API_KEY",
+    "slotSetting": false
+  },
+  {
+    "name": "FROM_EMAIL",
+    "value": "hello@sharedthread.co",
+    "slotSetting": false
+  },
+  {
+    "name": "FROM_NAME",
+    "value": "Shared Thread",
+    "slotSetting": false
+  },
+  {
+    "name": "NEXT_PUBLIC_SENTRY_DSN",
+    "value": "https://YOUR_SENTRY_DSN@sentry.io/YOUR_PROJECT_ID",
+    "slotSetting": false
+  },
+  {
+    "name": "ORCID_CLIENT_ID",
+    "value": "demo-orcid-client-id",
+    "slotSetting": false
+  },
+  {
+    "name": "ORCID_CLIENT_SECRET",
+    "value": "demo-orcid-client-secret",
+    "slotSetting": false
+  },
+  {
+    "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
+    "value": "true",
+    "slotSetting": false
+  },
+  {
+    "name": "WEBSITE_NODE_DEFAULT_VERSION",
+    "value": "22-lts",
+    "slotSetting": false
+  },
+  {
+    "name": "WEBSITE_RUN_FROM_PACKAGE",
+    "value": "1",
+    "slotSetting": false
+  }
+]

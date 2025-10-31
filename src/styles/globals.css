@@ -1,0 +1,26 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+@import './tokens.css';
+
+html, body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+  outline-offset: 2px;
+}
+
+.card {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+}
+
+.muted {
+  color: #777777;
+}
