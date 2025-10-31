@@ -44,3 +44,6 @@ scripts/deploy-to-azure.sh
 *.tsbuildinfo
 next-env.d.ts
 cookies.txt
+
+# Sentry Config File
+.env.sentry-build-plugin
