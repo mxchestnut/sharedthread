@@ -10,6 +10,7 @@
     "build": "prisma generate && next build",
     "start": "next start -p ${PORT:-3000}",
     "start:prod": "prisma migrate deploy && next start",
+    "postinstall": "prisma generate",
     "lint": "eslint"
   },
   "dependencies": {
