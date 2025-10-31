@@ -129,7 +129,7 @@ export async function getCurrentUser(): Promise<AuthUser | null> {
   if (!session) return null;
   
   try {
-    const user = await prisma.userss.findUnique({
+    const user = await prisma.users.findUnique({
       where: { id: session.userId },
       select: {
         id: true,
@@ -167,7 +167,7 @@ export async function getCurrentUser(): Promise<AuthUser | null> {
 
 export async function authenticateUser(email: string, password: string): Promise<User | null> {
   // Find user by email in database
-  const user = await prisma.userss.findUnique({
+  const user = await prisma.users.findUnique({
     where: { 
       email: email.toLowerCase() 
     }
@@ -183,7 +183,7 @@ export async function authenticateUser(email: string, password: string): Promise
   // If no password is set, allow login (for users created before password field was added)
   
   // Update last active timestamp
-  await prisma.userss.update({
+  await prisma.users.update({
     where: { id: user.id },
     data: { lastActiveAt: new Date() }
   });

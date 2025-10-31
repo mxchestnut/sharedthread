@@ -12,7 +12,7 @@ export async function GET() {
     
     // Step 3: Test if prisma object is defined
     console.log('Step 4: Checking prisma object:', !!prisma);
-    console.log('Step 5: Checking prisma.userss:', !!prisma?.users);
+    console.log('Step 5: Checking prisma.users:', !!prisma?.users);
     
     // Step 4: Test database connection (no complex queries)
     console.log('Step 6: Testing basic connection...');
