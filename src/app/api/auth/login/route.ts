@@ -3,6 +3,7 @@ import { authenticateUser, createSession } from '@/lib/auth';
 import { rateLimit, getClientIP, resetRateLimit } from '@/lib/rate-limit';
 import type { LoginCredentials, AuthResponse } from '@/types/auth';
 import { logInfo, logError } from '@/lib/error-logger';
+import * as Sentry from '@sentry/nextjs';
 
 
 export async function POST(request: NextRequest) {
@@ -102,6 +103,18 @@ export async function POST(request: NextRequest) {
       errorMessage,
       errorStack,
       apiRoute: '/api/auth/login',
+    });
+    
+    // Capture error with Sentry for production debugging
+    Sentry.captureException(error, {
+      tags: {
+        route: '/api/auth/login',
+        errorType: 'authentication'
+      },
+      extra: {
+        errorMessage,
+        timestamp: new Date().toISOString()
+      }
     });
     
     // Also console.error for immediate visibility in logs
