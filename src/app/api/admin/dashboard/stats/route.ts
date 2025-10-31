@@ -22,8 +22,8 @@ export async function GET() {
 
     // Fetch user stats
     const [totalUsers, newUsersThisWeek, activeUsers] = await Promise.all([
-      prisma.user.count(),
-      prisma.user.count({
+      prisma.users.count(),
+      prisma.users.count({
         where: {
           createdAt: {
             gte: weekAgo,
@@ -31,7 +31,7 @@ export async function GET() {
         },
       }),
       // Use recent activity as proxy for active users
-      prisma.user.count({
+      prisma.users.count({
         where: {
           updatedAt: {
             gte: weekAgo,

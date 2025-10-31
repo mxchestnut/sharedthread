@@ -21,7 +21,7 @@ export async function GET(
     const { userId } = params;
 
     // Check if user exists
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { id: userId },
     });
 

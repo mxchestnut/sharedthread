@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     const validatedData = signupSchema.parse(body);
 
     // Check if email already exists
-    const existingEmail = await prisma.user.findUnique({
+    const existingEmail = await prisma.users.findUnique({
       where: { email: validatedData.email },
     });
 
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
 
     // Check if phone number already exists
     if (validatedData.phoneNumber) {
-      const existingPhone = await prisma.user.findUnique({
+      const existingPhone = await prisma.users.findUnique({
         where: { phoneNumber: validatedData.phoneNumber },
       });
 
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if username is taken
-    const existingUsername = await prisma.user.findUnique({
+    const existingUsername = await prisma.users.findUnique({
       where: { username: validatedData.username },
     });
 
@@ -104,11 +104,11 @@ export async function POST(request: NextRequest) {
     const hashedPassword = await bcrypt.hash(validatedData.password, 10);
 
     // Determine role - first user is admin
-    const userCount = await prisma.user.count();
+    const userCount = await prisma.users.count();
     const role = userCount === 0 ? 'ADMIN' : 'MEMBER';
 
     // Create user
-    const user = await prisma.user.create({
+    const user = await prisma.users.create({
       data: {
         username: validatedData.username,
         displayName: validatedData.displayName,

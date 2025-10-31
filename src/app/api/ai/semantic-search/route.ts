@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
 
     // Search users
     if (type === 'all' || type === 'user') {
-      const users = await prisma.user.findMany({
+      const users = await prisma.users.findMany({
         where: {
           isApproved: true,
           NOT: { id: user.id }

@@ -13,7 +13,7 @@ export async function GET() {
     }
 
     // Get additional user data with counts for profile page
-    const fullUser = await prisma.user.findUnique({
+    const fullUser = await prisma.users.findUnique({
       where: { id: user.id },
       select: {
         id: true,

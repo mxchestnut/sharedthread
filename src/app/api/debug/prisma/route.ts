@@ -6,17 +6,17 @@ export async function GET() {
     // Test if Prisma Client is initialized
     console.log('Testing Prisma Client...');
     console.log('prisma object:', typeof prisma);
-    console.log('prisma.user:', typeof prisma.user);
+    console.log('prisma.users:', typeof prisma.users);
     
     // Try to count users
-    const userCount = await prisma.user.count();
+    const userCount = await prisma.users.count();
     
     return NextResponse.json({
       success: true,
       prismaInitialized: true,
       userCount,
       prismaType: typeof prisma,
-      userType: typeof prisma.user,
+      userType: typeof prisma.users,
     });
   } catch (error) {
     console.error('Prisma debug error:', error);

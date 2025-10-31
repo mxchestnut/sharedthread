@@ -27,7 +27,7 @@ export async function PUT(
     }
 
     // Check if user exists
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { id: userId },
       select: { id: true, role: true },
     });
@@ -43,7 +43,7 @@ export async function PUT(
 
     // Note: This is a mock implementation since the User model doesn't have a status field yet
     // In a real implementation, you would update the user's status in the database
-    // await prisma.user.update({
+    // await prisma.users.update({
     //   where: { id: userId },
     //   data: { status },
     // });

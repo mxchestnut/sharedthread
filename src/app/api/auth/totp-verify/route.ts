@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       }, { status: 401 });
     }
 
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { id: session.userId },
       select: {
         id: true,

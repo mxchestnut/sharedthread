@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user exists
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { id: userId },
     });
 
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     if (approve) {
       // Approve the user
-      await prisma.user.update({
+      await prisma.users.update({
         where: { id: userId },
         data: {
           isApproved: true,
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
     } else {
       // Deny the user - for now we'll just mark them as not approved
       // In the future, we might want to add a 'denied' status
-      await prisma.user.update({
+      await prisma.users.update({
         where: { id: userId },
         data: {
           isApproved: false,

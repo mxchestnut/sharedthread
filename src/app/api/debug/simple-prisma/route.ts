@@ -13,15 +13,15 @@ export async function GET() {
     console.log('Debug: PrismaClient instance created');
     
     // Test if prisma has expected properties
-    console.log('Debug: prisma.user exists:', !!prisma.user);
-    console.log('Debug: prisma.user.findUnique exists:', !!prisma.user?.findUnique);
+    console.log('Debug: prisma.users exists:', !!prisma.users);
+    console.log('Debug: prisma.users.findUnique exists:', !!prisma.users?.findUnique);
     
     // Test database connection
     await prisma.$connect();
     console.log('Debug: Database connected successfully');
     
     // Test a simple query
-    const userCount = await prisma.user.count();
+    const userCount = await prisma.users.count();
     console.log('Debug: User count query successful:', userCount);
     
     await prisma.$disconnect();
@@ -32,7 +32,7 @@ export async function GET() {
       tests: {
         import: 'success',
         instance: 'success', 
-        methods: !!prisma.user?.findUnique,
+        methods: !!prisma.users?.findUnique,
         connection: 'success',
         userCount
       }

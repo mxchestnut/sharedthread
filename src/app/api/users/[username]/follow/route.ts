@@ -26,7 +26,7 @@ export async function POST(
     }
 
     // Find the user to follow
-    const userToFollow = await prisma.user.findUnique({
+    const userToFollow = await prisma.users.findUnique({
       where: { username },
       select: { id: true, username: true, displayName: true },
     });
@@ -109,7 +109,7 @@ export async function DELETE(
     }
 
     // Find the user to unfollow
-    const userToUnfollow = await prisma.user.findUnique({
+    const userToUnfollow = await prisma.users.findUnique({
       where: { username },
       select: { id: true, username: true, displayName: true },
     });

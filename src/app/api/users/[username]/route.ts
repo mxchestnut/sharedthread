@@ -17,7 +17,7 @@ export async function GET(
     const currentUser = await getCurrentUser();
 
     // Find the user by username first
-    const targetUser = await prisma.user.findUnique({
+    const targetUser = await prisma.users.findUnique({
       where: { username },
       select: {
         id: true,
@@ -40,7 +40,7 @@ export async function GET(
     }
 
     // Now get the user with counts
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { username },
       select: {
         id: true,

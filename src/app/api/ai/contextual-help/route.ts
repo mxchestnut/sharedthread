@@ -36,7 +36,7 @@ export async function POST(request: Request) {
     }
 
     // Get user's createdAt date
-    const userRecord = await prisma.user.findUnique({
+    const userRecord = await prisma.users.findUnique({
       where: { id: user.id },
       select: { createdAt: true },
     });

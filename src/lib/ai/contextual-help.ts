@@ -368,7 +368,7 @@ export async function generateOnboardingPath(
   userGoal: 'reader' | 'writer' | 'community-leader' | 'explorer'
 ): Promise<TutorialPath> {
   // Get user's current progress
-  const user = await prisma.user.findUnique({
+  const user = await prisma.users.findUnique({
     where: { id: userId },
     include: {
       works: { take: 1 },

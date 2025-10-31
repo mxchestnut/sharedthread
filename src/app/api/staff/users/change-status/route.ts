@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user exists
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { id: userId },
     });
 
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Update user status
-    await prisma.user.update({
+    await prisma.users.update({
       where: { id: userId },
       data: { status },
     });

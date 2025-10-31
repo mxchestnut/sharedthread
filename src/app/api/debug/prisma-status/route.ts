@@ -9,8 +9,8 @@ export async function GET() {
     console.log('Prisma imported successfully:', !!prisma);
     
     // Test 2: Check if prisma object has expected methods
-    console.log('Prisma has user property:', !!prisma.user);
-    console.log('Prisma user has findUnique:', !!prisma.user?.findUnique);
+    console.log('Prisma has user property:', !!prisma.users);
+    console.log('Prisma user has findUnique:', !!prisma.users?.findUnique);
     
     // Test 3: Try a simple connection test
     console.log('Testing database connection...');
@@ -19,15 +19,15 @@ export async function GET() {
     
     // Test 4: Try findUnique on users table
     console.log('Testing findUnique...');
-    const userCount = await prisma.user.count();
+    const userCount = await prisma.users.count();
     console.log('User count:', userCount);
     
     return NextResponse.json({
       success: true,
       tests: {
         prismaImported: !!prisma,
-        hasUserProperty: !!prisma.user,
-        hasFindUnique: !!prisma.user?.findUnique,
+        hasUserProperty: !!prisma.users,
+        hasFindUnique: !!prisma.users?.findUnique,
         connectionTest: result,
         userCount
       }

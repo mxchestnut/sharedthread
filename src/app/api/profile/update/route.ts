@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Update user in database (only display name and bio for now)
-    const updatedUser = await prisma.user.update({
+    const updatedUser = await prisma.users.update({
       where: { id: user.id },
       data: {
         displayName: displayName.trim(),

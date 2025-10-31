@@ -37,7 +37,7 @@ export async function GET() {
       }),
 
       // Total users count
-      prisma.user.count(),
+      prisma.users.count(),
 
       // Total proposals count
       prisma.communityProposal.count(),
@@ -46,7 +46,7 @@ export async function GET() {
       prisma.community.count(),
 
       // Recent users (last 7 days)
-      prisma.user.findMany({
+      prisma.users.findMany({
         where: {
           createdAt: {
             gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
@@ -86,7 +86,7 @@ export async function GET() {
     ]);
 
     // Calculate some additional metrics
-    const activeUsers = await prisma.user.count({
+    const activeUsers = await prisma.users.count({
       where: {
         lastActiveAt: {
           gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) // Last 30 days

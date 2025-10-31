@@ -37,7 +37,7 @@ export async function GET(request: NextRequest) {
     // Fetch growth data
     const [userGrowth, workGrowth, engagementData] = await Promise.all([
       // User growth over time
-      prisma.user.findMany({
+      prisma.users.findMany({
         where: {
           createdAt: { gte: startDate },
         },
@@ -114,7 +114,7 @@ export async function GET(request: NextRequest) {
       }),
       
       // Top authors by follower count and work count
-      prisma.user.findMany({
+      prisma.users.findMany({
         take: 10,
         orderBy: [
           { followers: { _count: 'desc' } },

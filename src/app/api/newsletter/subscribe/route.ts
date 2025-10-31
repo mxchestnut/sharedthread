@@ -15,13 +15,13 @@ export async function POST(request: NextRequest) {
     const { email } = newsletterSchema.parse(body);
 
     // Check if email already exists in our users table
-    const existingUser = await prisma.user.findUnique({
+    const existingUser = await prisma.users.findUnique({
       where: { email: email.toLowerCase() },
     });
 
     if (existingUser) {
       // Update existing user's newsletter preference
-      await prisma.user.update({
+      await prisma.users.update({
         where: { id: existingUser.id },
         data: { newsletterSubscribed: true },
       });

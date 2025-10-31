@@ -19,7 +19,7 @@ export async function GET() {
     // Fetch recent activities from various sources
     const [recentUsers, recentWorks, recentComments] = await Promise.all([
       // Recent users (last 10)
-      prisma.user.findMany({
+      prisma.users.findMany({
         take: 5,
         orderBy: { createdAt: 'desc' },
         select: {

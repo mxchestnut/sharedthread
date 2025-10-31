@@ -70,7 +70,7 @@ export async function analyzeUserStuckPoints(): Promise<UserBehaviorInsight[]> {
   const insights: UserBehaviorInsight[] = [];
 
   // 1. New users who haven't created works (potential barrier)
-  const newUsersWithoutWorks = await prisma.user.count({
+  const newUsersWithoutWorks = await prisma.users.count({
     where: {
       createdAt: {
         gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // Last 7 days
@@ -81,7 +81,7 @@ export async function analyzeUserStuckPoints(): Promise<UserBehaviorInsight[]> {
     },
   });
 
-  const totalNewUsers = await prisma.user.count({
+  const totalNewUsers = await prisma.users.count({
     where: {
       createdAt: {
         gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
@@ -107,7 +107,7 @@ export async function analyzeUserStuckPoints(): Promise<UserBehaviorInsight[]> {
   });
 
   // 2. Users who started but didn't publish (stuck in draft)
-  const draftOnlyUsers = await prisma.user.count({
+  const draftOnlyUsers = await prisma.users.count({
     where: {
       works: {
         some: {
@@ -120,7 +120,7 @@ export async function analyzeUserStuckPoints(): Promise<UserBehaviorInsight[]> {
     },
   });
 
-  const usersWithWorks = await prisma.user.count({
+  const usersWithWorks = await prisma.users.count({
     where: {
       works: {
         some: {},

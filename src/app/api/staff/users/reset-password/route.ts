@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get user details
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { id: userId },
       select: {
         id: true,
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     
     // Note: In production, you'd store the reset token in the database
     // For now, we'll just update the timestamp
-    await prisma.user.update({
+    await prisma.users.update({
       where: { id: userId },
       data: {
         updatedAt: new Date(),

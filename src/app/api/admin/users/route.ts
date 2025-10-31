@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
 
     // Fetch users with counts
     const [users, totalCount] = await Promise.all([
-      prisma.user.findMany({
+      prisma.users.findMany({
         where,
         skip: offset,
         take: limit,
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
           },
         },
       }),
-      prisma.user.count({ where }),
+      prisma.users.count({ where }),
     ]);
 
     const totalPages = Math.ceil(totalCount / limit);
