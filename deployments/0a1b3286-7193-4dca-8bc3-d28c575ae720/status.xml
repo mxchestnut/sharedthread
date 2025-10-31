@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>0a1b3286-7193-4dca-8bc3-d28c575ae720</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"a96819a8a5783d71f1c82bd66fcad1eb50579436","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"Add Sentry test endpoint to verify error reporting"}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-10-31T13:06:00.2775397Z</lastSuccessEndTime>
+  <receivedTime>2025-10-31T13:05:56.3853944Z</receivedTime>
+  <startTime>2025-10-31T13:05:57.7701736Z</startTime>
+  <endTime>2025-10-31T13:06:00.2775397Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

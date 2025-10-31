@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>7348f382-67a6-45a2-9067-ac8db0c3b5d0</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"e2297640ec8b0344ee270d2018fd2d57e5be3adf","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"Add Sentry error capture to login route and debug endpoint"}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-10-31T13:19:17.7205884Z</lastSuccessEndTime>
+  <receivedTime>2025-10-31T13:19:13.4091703Z</receivedTime>
+  <startTime>2025-10-31T13:19:14.88802Z</startTime>
+  <endTime>2025-10-31T13:19:17.7205884Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

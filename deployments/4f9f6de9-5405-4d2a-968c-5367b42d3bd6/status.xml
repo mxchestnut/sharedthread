@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>4f9f6de9-5405-4d2a-968c-5367b42d3bd6</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"a73a7db4bfa1317ace95530dd7c4cead28cca4b4","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"Add simple health check endpoint without Prisma dependencies"}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-10-31T13:12:06.9405486Z</lastSuccessEndTime>
+  <receivedTime>2025-10-31T13:12:00.7939632Z</receivedTime>
+  <startTime>2025-10-31T13:12:03.4930022Z</startTime>
+  <endTime>2025-10-31T13:12:06.9405486Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

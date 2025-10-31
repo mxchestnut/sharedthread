@@ -1,0 +1,7 @@
+<step title="Incoming Request" date="2025-10-29T15:27:31.433" instance="53cb09" url="/diagnostics/runtime" method="GET" type="request" pid="823,1,22" Host="sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net" User-Agent="GITHUBACTIONS_DeployWebAppToAzure_df1ac74e5fcc350eb4fc3a077fcafa660132f4b2532732a238d3f4a07c967089" Authorization="Bas..." Content-Type="application/json; charset=utf-8" Content-Length="0" X-ARR-LOG-ID="24e9db84-bf91-49d6-b2bb-b5ab5ebc32e9" CLIENT-IP="52.159.229.4:27680" X-SITE-DEPLOYMENT-ID="sharedthread" WAS-DEFAULT-HOSTNAME="sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net" X-Forwarded-Proto="https" X-AppService-Proto="https" X-Forwarded-TlsVersion="1.3" X-WAWS-Unencoded-URL="/diagnostics/runtime" X-Client-IP="52.159.229.4" X-Client-Port="27680" >
+  <step title="Cleanup Xml Logs" date="2025-10-29T15:27:31.442" >
+    <step title="Cleanup Infos" date="2025-10-29T15:27:31.490" totalFiles="296" totalCleanup="136" /><!-- duration: 28ms -->
+  </step><!-- duration: 96ms -->
+  <step title="RuntimeController.GetRuntimeVersions" date="2025-10-29T15:27:31.984" /><!-- duration: 21ms -->
+  <step title="Outgoing response" date="2025-10-29T15:27:32.456" type="response" statusCode="200" statusText="OK" /><!-- duration: 22ms -->
+</step><!-- duration: 1054ms -->

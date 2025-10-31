@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>1a0badb1-7235-403f-a2de-17a54122c86a</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"9ee33bd7d95a02777b74afecc8ae8992b9250f47","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"Add test endpoint to isolate Prisma import issue"}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-10-31T13:23:53.8145791Z</lastSuccessEndTime>
+  <receivedTime>2025-10-31T13:23:49.8132314Z</receivedTime>
+  <startTime>2025-10-31T13:23:51.3068712Z</startTime>
+  <endTime>2025-10-31T13:23:53.8145791Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

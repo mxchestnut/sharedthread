@@ -1,0 +1,18 @@
+<step title="Incoming Request" date="2025-10-31T13:23:11.208" instance="53cb09" url="/api/zipdeploy?isAsync=true&amp;deployer=GITHUB_ZIP_DEPLOY&amp;message=%7B%22type%22%3A%22deployment%22%2C%22sha%22%3A%229ee33bd7d95a02777b74afecc8ae8992b9250f47%22%2C%22repoName%22%3A%22mxchestnut%2Fsharedthread%22%2C%22actor%22%3A%22mxchestnut%22%2C%22slotName%22%3A%22production%22%2C%22commitMessage%22%3A%22Add%20test%20endpoint%20to%20isolate%20Prisma%20import%20issue%22%7D" method="POST" type="request" pid="823,1,27" Host="sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net" User-Agent="GITHUBACTIONS_DeployWebAppToAzure_df1ac74e5fcc350eb4fc3a077fcafa660132f4b2532732a238d3f4a07c967089" Authorization="Bas..." Content-Type="application/octet-stream" Cookie="ARRAffinity=53cb09fa1df56cad4377ddb96071183a2409f29839db9f7c48309c156a15e042;Path=/;HttpOnly;Secure;Domain=sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net; ARRAffinitySameSite=53cb09fa1df56cad4377ddb96071183a2409f29839db9f7c48309c156a15e042;Path=/;HttpOnly;SameSite=None;Secure;Domain=sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net" Transfer-Encoding="chunked" X-ARR-LOG-ID="aaf54901-acc9-42a6-9e95-f868ae0f063e" CLIENT-IP="52.165.251.242:62464" X-SITE-DEPLOYMENT-ID="sharedthread" WAS-DEFAULT-HOSTNAME="sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net" X-Forwarded-Proto="https" X-AppService-Proto="https" X-Forwarded-TlsVersion="1.3" X-WAWS-Unencoded-URL="/api/zipdeploy?isAsync=true&amp;deployer=GITHUB_ZIP_DEPLOY&amp;message=%7B%22type%22%3A%22deployment%22%2C%22sha%22%3A%229ee33bd7d95a02777b74afecc8ae8992b9250f47%22%2C%22repoName%22%3A%22mxchestnut%2Fsharedthread%22%2C%22actor%22%3A%22mxchestnut%22%2C%22slotName%22%3A%22production%22%2C%22commitMessage%22%3A%22Add%20test%20endpoint%20to%20isolate%20Prisma%20import%20issue%22%7D" X-Client-IP="52.165.251.242" X-Client-Port="62464" >
+  <step title="Cleanup Xml Logs" date="2025-10-31T13:23:11.230" >
+    <step title="Cleanup Infos" date="2025-10-31T13:23:11.304" totalFiles="432" totalCleanup="272" /><!-- duration: 18ms -->
+  </step><!-- duration: 102ms -->
+  <step title="ZipPushDeploy" date="2025-10-31T13:23:11.850" >
+    <step title="ZipDeploy. Run from package. Ignore remote build." date="2025-10-31T13:23:11.898" /><!-- duration: 8ms -->
+    <step title="Starting PushDeployAsync" date="2025-10-31T13:23:11.915" /><!-- duration: 4ms -->
+    <step title="WEBSITE_RUN_FROM_PACKAGE is set to 1. Writing zip to SitePackagesPath" date="2025-10-31T13:23:11.933" /><!-- duration: 70ms -->
+    <step title="Copying zip to SitePackages /home/data/SitePackages/20251031132311.zip from request body" date="2025-10-31T13:23:12.012" /><!-- duration: 18ms -->
+    <step title="Writing multipart request body to /home/data/SitePackages/20251031132311.zip" date="2025-10-31T13:23:12.047" /><!-- duration: 19ms -->
+    <step title="Deleting outdated zip file /home/data/SitePackages/20251031124005.zip" date="2025-10-31T13:23:44.247" /><!-- duration: 62ms -->
+    <step title="Start deployment in the background" date="2025-10-31T13:23:44.356" >
+      <step title="Acquiring Deployment Lock" date="2025-10-31T13:23:44.435" /><!-- duration: 4ms -->
+      <step title="Acquired Deployment Lock" date="2025-10-31T13:23:44.491" /><!-- duration: 3ms -->
+    </step><!-- duration: 390ms -->
+  </step><!-- duration: 32932ms -->
+  <step title="Outgoing response" date="2025-10-31T13:23:44.792" type="response" statusCode="202" statusText="Accepted" /><!-- duration: 5ms -->
+</step><!-- duration: 33592ms -->
