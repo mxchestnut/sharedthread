@@ -105,23 +105,27 @@ fi
 
 # For keep/older-than modes, iterate workflows for clearer control
 log "Fetching workflows…"
-workflows=$(gh api repos/$REPO/actions/workflows -q '.workflows[] | {id: .id, name: .name}')
 
 if [[ "$MODE" == "keep" ]]; then
   log "Keeping last $KEEP_PER_WORKFLOW runs per workflow on branch=$BRANCH, status=$STATUS"
-  echo "$workflows" | while read -r wf; do
-    wid=$(jq -r '.id' <<<"$wf")
-    wname=$(jq -r '.name' <<<"$wf")
-    log "Workflow: $wname ($wid)"
-    # List runs newest first
-    gh api repos/$REPO/actions/workflows/$wid/runs --paginate \
-      -q ".workflow_runs | map(select(.head_branch==\"$BRANCH\" and (.status==\"$STATUS\" or .conclusion!=null))) | sort_by(.created_at) | reverse | .[] | {id: .id, created_at: .created_at}" \
-    | jq -s '.' | jq ".[$KEEP_PER_WORKFLOW:] | .[]?" | while read -r run; do
-        rid=$(jq -r '.id' <<<"$run")
-        rts=$(jq -r '.created_at' <<<"$run")
-        [[ -n "$rid" ]] && echo "Deleting run $rid ($rts)" && delete_run "$rid"
-      done
-  done
+  gh api repos/$REPO/actions/workflows -q '.workflows[] | "\(.id)\t\(.name)"' \
+  | while IFS=$'\t' read -r wid wname; do
+      [[ -z "$wid" ]] && continue
+      log "Workflow: $wname ($wid)"
+      # Get runs newest first for this workflow, filtered to branch/status
+      runs_json=$(gh api repos/$REPO/actions/workflows/$wid/runs --paginate)
+      # Build list of run ids after keeping the most recent N
+    echo "$runs_json" \
+    | jq -r --arg branch "$BRANCH" --arg status "$STATUS" --argjson keep "$KEEP_PER_WORKFLOW" '
+      .workflow_runs
+      | map(select(.head_branch==$branch and (.status==$status or .conclusion!=null)))
+      | sort_by(.created_at) | reverse | .[$keep:]
+      | .[]? | "\(.id)\t\(.created_at)"' | while IFS=$'\t' read -r rid rts; do
+          [[ -z "$rid" ]] && continue
+          echo "Deleting run $rid ($rts)"
+          delete_run "$rid"
+        done
+    done
   exit 0
 fi
 
@@ -131,18 +135,22 @@ if [[ "$MODE" == "older-than" ]]; then
     exit 1
   fi
   log "Deleting runs older than $CUTOFF on branch=$BRANCH, status=$STATUS"
-  echo "$workflows" | while read -r wf; do
-    wid=$(jq -r '.id' <<<"$wf")
-    wname=$(jq -r '.name' <<<"$wf")
-    log "Workflow: $wname ($wid)"
-    gh api repos/$REPO/actions/workflows/$wid/runs --paginate \
-      -q ".workflow_runs | map(select(.head_branch==\"$BRANCH\" and (.status==\"$STATUS\" or .conclusion!=null) and (.created_at < \"$CUTOFF\"))) | .[] | {id: .id, created_at: .created_at}" \
-    | while read -r run; do
-        rid=$(jq -r '.id' <<<"$run")
-        rts=$(jq -r '.created_at' <<<"$run")
-        [[ -n "$rid" ]] && echo "Deleting run $rid ($rts)" && delete_run "$rid"
-      done
-  done
+  gh api repos/$REPO/actions/workflows -q '.workflows[] | "\(.id)\t\(.name)"' \
+  | while IFS=$'\t' read -r wid wname; do
+      [[ -z "$wid" ]] && continue
+      log "Workflow: $wname ($wid)"
+      runs_json=$(gh api repos/$REPO/actions/workflows/$wid/runs --paginate)
+      echo "$runs_json" \
+      | jq -r --arg branch "$BRANCH" --arg status "$STATUS" --arg cutoff "$CUTOFF" '
+        .workflow_runs
+        | map(select(.head_branch==$branch and (.status==$status or .conclusion!=null) and (.created_at < $cutoff)))
+        | sort_by(.created_at)
+        | .[]? | "\(.id)\t\(.created_at)"' | while IFS=$'\t' read -r rid rts; do
+          [[ -z "$rid" ]] && continue
+          echo "Deleting run $rid ($rts)"
+          delete_run "$rid"
+        done
+    done
   exit 0
 fi
 

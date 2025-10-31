@@ -90,6 +90,11 @@ export function checkTailscaleAccess(request: Request): {
   ip: string | null;
   reason?: string;
 } {
+  // Allow bypass if explicitly disabled (for initial setup or emergencies)
+  if (process.env.DISABLE_TAILSCALE === 'true') {
+    return { allowed: true, ip: 'bypass', reason: 'Tailscale disabled by env var' };
+  }
+
   // In development, allow all access (optional - set REQUIRE_TAILSCALE=true to enforce)
   if (process.env.NODE_ENV === 'development' && process.env.REQUIRE_TAILSCALE !== 'true') {
     return { allowed: true, ip: 'localhost', reason: 'Development mode' };
