@@ -1,7 +1,7 @@
 import './globals.css';
 import Link from 'next/link';
 import { LibraryBig, Handshake, FilePen, ListChecks, Earth } from 'lucide-react';
-import SessionProvider from '@/components/providers';
+import Providers from '@/components/providers';
 import ConditionalLayout from '@/components/ConditionalLayout';
 import { Metadata } from 'next';
 import GlobalHotkeys from '@/components/GlobalHotkeys';
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main-content" className="skip-to-main">
           Skip to main content
         </a>
-        <SessionProvider>
+        <Providers>
           <GlobalHotkeys />
           <ConditionalLayout>{children}</ConditionalLayout>
           <footer className="mt-16 py-12 bg-black text-white border-t-4 border-black">
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
             </div>
           </footer>
-        </SessionProvider>
+        </Providers>
       </body>
     </html>
   );
