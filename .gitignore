@@ -33,11 +33,17 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
-# Azure deployment files with secrets
-azure-env-vars.json
-azure-env-oauth.json
+# Azure logs
 azure-env*.json
-scripts/deploy-to-azure.sh
+LogFiles/
+deployments/
+latest-oauth-logs.zip
+*.log
+
+# Package managers
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # vercel
 .vercel

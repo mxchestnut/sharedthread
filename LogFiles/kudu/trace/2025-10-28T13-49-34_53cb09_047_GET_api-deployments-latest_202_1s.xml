@@ -1,9 +1,0 @@
-<step title="Incoming Request" date="2025-10-28T13:49:34.443" instance="53cb09" url="/api/deployments/latest?deployer=GITHUB_ZIP_DEPLOY&amp;time=2025-10-28_13-49-26Z" method="GET" type="request" pid="824,1,16" Host="sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net" User-Agent="GITHUBACTIONS_DeployWebAppToAzure_df1ac74e5fcc350eb4fc3a077fcafa660132f4b2532732a238d3f4a07c967089" Authorization="Bas..." Content-Type="application/json; charset=utf-8" Cookie="ARRAffinity=53cb09fa1df56cad4377ddb96071183a2409f29839db9f7c48309c156a15e042;Path=/;HttpOnly;Secure;Domain=sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net; ARRAffinitySameSite=53cb09fa1df56cad4377ddb96071183a2409f29839db9f7c48309c156a15e042;Path=/;HttpOnly;SameSite=None;Secure;Domain=sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net" Content-Length="0" X-ARR-LOG-ID="eabbb444-b502-479a-909e-efc45ed9623f" CLIENT-IP="20.161.30.201:22721" X-SITE-DEPLOYMENT-ID="sharedthread" WAS-DEFAULT-HOSTNAME="sharedthread-ggeheafjamb9hxc2.scm.centralus-01.azurewebsites.net" X-Forwarded-Proto="https" X-AppService-Proto="https" X-Forwarded-TlsVersion="1.3" X-WAWS-Unencoded-URL="/api/deployments/latest?deployer=GITHUB_ZIP_DEPLOY&amp;time=2025-10-28_13-49-26Z" X-Client-IP="20.161.30.201" X-Client-Port="22721" >
-  <step title="Cleanup Xml Logs" date="2025-10-28T13:49:34.447" /><!-- duration: 10ms -->
-  <step title="DeploymentService.GetResult" date="2025-10-28T13:49:34.471" >
-    <step title="DeploymentService.GetLatestDeployment" date="2025-10-28T13:49:34.474" >
-      <step title="DeploymentManager.GetResults" date="2025-10-28T13:49:34.478" /><!-- duration: 673ms -->
-    </step><!-- duration: 681ms -->
-  </step><!-- duration: 688ms -->
-  <step title="Outgoing response" date="2025-10-28T13:49:35.164" type="response" statusCode="202" statusText="Accepted" /><!-- duration: 6ms -->
-</step><!-- duration: 730ms -->
