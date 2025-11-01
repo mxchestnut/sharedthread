@@ -35,6 +35,8 @@ yarn-error.log*
 
 # Azure deployment files with secrets
 azure-env-vars.json
+azure-env-oauth.json
+azure-env*.json
 scripts/deploy-to-azure.sh
 
 # vercel
