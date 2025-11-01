@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",
+    "@auth/prisma-adapter": "^2.11.1",
     "@prisma/client": "^6.18.0",
     "@sentry/nextjs": "^10.22.0",
     "@tiptap/extension-color": "^3.9.1",
@@ -36,6 +37,7 @@
     "jose": "^6.1.0",
     "lucide-react": "^0.548.0",
     "next": "^15.5.6",
+    "next-auth": "^4.24.13",
     "plagiarism-detector": "^0.5.0",
     "prisma": "^6.18.0",
     "react": "^18.3.1",

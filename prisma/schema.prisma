@@ -496,11 +496,13 @@ model users {
   id                                                        String                @id
   username                                                  String                @unique
   email                                                     String                @unique
+  name                                                      String?
+  image                                                     String?
   displayName                                               String
   avatarUrl                                                 String?
   bio                                                       String?
   role                                                      Role                  @default(MEMBER)
-  emailVerified                                             Boolean               @default(false)
+  emailVerified                                             DateTime?
   totpSecret                                                String?
   isApproved                                                Boolean               @default(false)
   agreedToTerms                                             Boolean               @default(false)
@@ -687,4 +689,14 @@ enum WorkStatus {
   BETA
   PUBLISHED
   ARCHIVED
+}
+
+// NextAuth.js verification tokens
+model verification_tokens {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
 }
