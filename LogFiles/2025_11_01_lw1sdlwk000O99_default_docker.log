@@ -1,0 +1,346 @@
+2025-11-01T10:14:27.6367625Z    _____                               
+2025-11-01T10:14:27.6385147Z   /  _  \ __________ _________   ____  
+2025-11-01T10:14:27.6387600Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-11-01T10:14:27.6389725Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-11-01T10:14:27.6465272Z \____|__  /_____ \____/ |__|    \___  >
+2025-11-01T10:14:27.6465659Z         \/      \/                  \/ 
+2025-11-01T10:14:27.6465767Z A P P   S E R V I C E   O N   L I N U X
+2025-11-01T10:14:27.6465802Z 
+2025-11-01T10:14:27.6465839Z Documentation: http://aka.ms/webapp-linux
+2025-11-01T10:14:27.6505064Z NodeJS quickstart: https://aka.ms/node-qs
+2025-11-01T10:14:27.6505377Z NodeJS Version : v22.17.0
+2025-11-01T10:14:27.6505422Z Note: Any data outside '/home' is not persisted
+2025-11-01T10:14:27.6516795Z 
+2025-11-01T10:14:32.7507435Z Starting OpenBSD Secure Shell server: sshd.
+2025-11-01T10:14:32.7793969Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-11-01T10:14:32.9246737Z Updating certificates in /etc/ssl/certs...
+2025-11-01T10:14:48.9396149Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-11-01T10:14:49.0158850Z 4 added, 0 removed; done.
+2025-11-01T10:14:49.0462155Z Running hooks in /etc/ca-certificates/update.d...
+2025-11-01T10:14:49.1087891Z done.
+2025-11-01T10:14:49.1756578Z CA certificates copied and updated successfully.
+2025-11-01T10:14:49.8745863Z Starting periodic command scheduler: cron.
+2025-11-01T10:14:50.5369288Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-11-01T10:14:50.5385764Z Could not find operation ID in manifest. Generating an operation id...
+2025-11-01T10:14:50.5399901Z Build Operation ID: 0f1086c5-780a-4e58-b807-1bbfafa746ae
+2025-11-01T10:14:51.0270392Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-11-01T10:14:51.1322038Z Writing output script to '/opt/startup/startup.sh'
+2025-11-01T10:14:51.2938455Z Running #!/bin/sh
+2025-11-01T10:14:51.3233865Z 
+2025-11-01T10:14:51.3234076Z # Enter the source directory to make sure the script runs where the user expects
+2025-11-01T10:14:51.3234124Z cd "/home/site/wwwroot"
+2025-11-01T10:14:51.3234150Z 
+2025-11-01T10:14:51.3234180Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-11-01T10:14:51.3234208Z if [ -z "$PORT" ]; then
+2025-11-01T10:14:51.3234236Z 		export PORT=8080
+2025-11-01T10:14:51.3234261Z fi
+2025-11-01T10:14:51.3234464Z 
+2025-11-01T10:14:51.3880008Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-11-01T10:14:55.5553028Z npm info using npm@10.9.2
+2025-11-01T10:14:55.5763652Z npm info using node@v22.17.0
+2025-11-01T10:15:28.3818578Z Prisma schema loaded from prisma/schema.prisma
+2025-11-01T10:15:28.5184715Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-11-01T10:15:31.7820124Z 
+2025-11-01T10:15:32.6772878Z 8 migrations found in prisma/migrations
+2025-11-01T10:15:32.6773086Z 
+2025-11-01T10:15:33.0450407Z 
+2025-11-01T10:15:33.0539136Z No pending migrations to apply.
+2025-11-01T10:15:33.1601609Z npm http fetch GET 200 https://registry.npmjs.org/npm 965ms
+2025-11-01T10:15:33.1762594Z npm notice
+2025-11-01T10:15:33.1762908Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-11-01T10:15:33.1762961Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-11-01T10:15:33.1762995Z npm notice To update run: npm install -g npm@11.6.2
+2025-11-01T10:15:33.1763021Z npm notice
+2025-11-01T10:15:33.1763047Z npm info ok
+2025-11-01T10:15:33.8615831Z npm info using npm@10.9.2
+2025-11-01T10:15:33.8626078Z npm info using node@v22.17.0
+2025-11-01T10:15:34.0063794Z 
+2025-11-01T10:15:34.0064294Z > shared-thread@0.1.0 start
+2025-11-01T10:15:34.0064348Z > next start -p ${PORT:-3000}
+2025-11-01T10:15:34.0064377Z 
+2025-11-01T10:15:36.4894303Z    ▲ Next.js 15.5.6
+2025-11-01T10:15:36.5061113Z    - Local:        http://localhost:8080
+2025-11-01T10:15:36.5061356Z    - Network:      http://169.254.130.3:8080
+2025-11-01T10:15:36.5061389Z 
+2025-11-01T10:15:36.5061591Z  ✓ Starting...
+2025-11-01T10:15:44.2495088Z  ✓ Ready in 9.4s
+2025-11-01T10:22:33.2218080Z    _____                               
+2025-11-01T10:22:33.2581813Z   /  _  \ __________ _________   ____  
+2025-11-01T10:22:33.2582187Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-11-01T10:22:33.2582232Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-11-01T10:22:33.2582259Z \____|__  /_____ \____/ |__|    \___  >
+2025-11-01T10:22:33.2582317Z         \/      \/                  \/ 
+2025-11-01T10:22:33.2582450Z A P P   S E R V I C E   O N   L I N U X
+2025-11-01T10:22:33.2582477Z 
+2025-11-01T10:22:33.2582513Z Documentation: http://aka.ms/webapp-linux
+2025-11-01T10:22:33.2582544Z NodeJS quickstart: https://aka.ms/node-qs
+2025-11-01T10:22:33.2582570Z NodeJS Version : v22.17.0
+2025-11-01T10:22:33.2582597Z Note: Any data outside '/home' is not persisted
+2025-11-01T10:22:33.2582619Z 
+2025-11-01T10:22:48.3902547Z Starting OpenBSD Secure Shell server: sshd.
+2025-11-01T10:22:48.4391745Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-11-01T10:22:48.8460125Z Updating certificates in /etc/ssl/certs...
+2025-11-01T10:23:10.0322670Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-11-01T10:23:10.1080326Z 4 added, 0 removed; done.
+2025-11-01T10:23:10.1363042Z Running hooks in /etc/ca-certificates/update.d...
+2025-11-01T10:23:10.1442886Z done.
+2025-11-01T10:23:10.2022669Z CA certificates copied and updated successfully.
+2025-11-01T10:23:10.5640143Z Starting periodic command scheduler: cron.
+2025-11-01T10:23:11.8479115Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-11-01T10:23:11.8499420Z Could not find operation ID in manifest. Generating an operation id...
+2025-11-01T10:23:11.8659823Z Build Operation ID: abf0c476-b922-4a66-8af2-26b352a1ddfd
+2025-11-01T10:23:12.5843047Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-11-01T10:23:12.7451570Z Writing output script to '/opt/startup/startup.sh'
+2025-11-01T10:23:12.8812695Z Running #!/bin/sh
+2025-11-01T10:23:12.8813348Z 
+2025-11-01T10:23:12.8813605Z # Enter the source directory to make sure the script runs where the user expects
+2025-11-01T10:23:12.8813660Z cd "/home/site/wwwroot"
+2025-11-01T10:23:12.8813686Z 
+2025-11-01T10:23:12.8813815Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-11-01T10:23:12.8813844Z if [ -z "$PORT" ]; then
+2025-11-01T10:23:12.8813868Z 		export PORT=8080
+2025-11-01T10:23:12.8813891Z fi
+2025-11-01T10:23:12.8813914Z 
+2025-11-01T10:23:12.8826919Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-11-01T10:23:16.5110140Z npm info using npm@10.9.2
+2025-11-01T10:23:16.5124361Z npm info using node@v22.17.0
+2025-11-01T10:23:44.6759510Z Prisma schema loaded from prisma/schema.prisma
+2025-11-01T10:23:45.3405125Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-11-01T10:23:46.2853750Z 
+2025-11-01T10:23:46.2856084Z 8 migrations found in prisma/migrations
+2025-11-01T10:23:46.2857522Z 
+2025-11-01T10:23:47.5625070Z 
+2025-11-01T10:23:47.5643003Z No pending migrations to apply.
+2025-11-01T10:23:47.6711888Z npm http fetch GET 200 https://registry.npmjs.org/npm 1652ms
+2025-11-01T10:23:47.6902872Z npm notice
+2025-11-01T10:23:47.6903396Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-11-01T10:23:47.6903454Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-11-01T10:23:47.6903494Z npm notice To update run: npm install -g npm@11.6.2
+2025-11-01T10:23:47.6903526Z npm notice
+2025-11-01T10:23:47.6982555Z npm info ok
+2025-11-01T10:23:48.5721726Z npm info using npm@10.9.2
+2025-11-01T10:23:48.5722314Z npm info using node@v22.17.0
+2025-11-01T10:23:48.8839897Z 
+2025-11-01T10:23:48.8840551Z > shared-thread@0.1.0 start
+2025-11-01T10:23:48.8840591Z > next start -p ${PORT:-3000}
+2025-11-01T10:23:48.8840711Z 
+2025-11-01T10:23:51.5941390Z    ▲ Next.js 15.5.6
+2025-11-01T10:23:51.6101942Z    - Local:        http://localhost:8080
+2025-11-01T10:23:51.6102167Z    - Network:      http://169.254.130.2:8080
+2025-11-01T10:23:51.6102200Z 
+2025-11-01T10:23:51.6102239Z  ✓ Starting...
+2025-11-01T10:24:00.2346001Z  ✓ Ready in 9.8s
+2025-11-01T10:39:23.7803138Z    _____                               
+2025-11-01T10:39:23.7913911Z   /  _  \ __________ _________   ____  
+2025-11-01T10:39:23.7914037Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-11-01T10:39:23.7914099Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-11-01T10:39:23.7914128Z \____|__  /_____ \____/ |__|    \___  >
+2025-11-01T10:39:23.7914172Z         \/      \/                  \/ 
+2025-11-01T10:39:23.7914200Z A P P   S E R V I C E   O N   L I N U X
+2025-11-01T10:39:23.7914224Z 
+2025-11-01T10:39:23.7914258Z Documentation: http://aka.ms/webapp-linux
+2025-11-01T10:39:23.7914369Z NodeJS quickstart: https://aka.ms/node-qs
+2025-11-01T10:39:23.7914397Z NodeJS Version : v22.17.0
+2025-11-01T10:39:23.7914424Z Note: Any data outside '/home' is not persisted
+2025-11-01T10:39:23.7914448Z 
+2025-11-01T10:39:27.0024923Z Starting OpenBSD Secure Shell server: sshd.
+2025-11-01T10:39:27.0322570Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-11-01T10:39:27.0979623Z Updating certificates in /etc/ssl/certs...
+2025-11-01T10:39:42.0438438Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-11-01T10:39:42.1945889Z 4 added, 0 removed; done.
+2025-11-01T10:39:42.2108134Z Running hooks in /etc/ca-certificates/update.d...
+2025-11-01T10:39:42.2438728Z done.
+2025-11-01T10:39:42.3979695Z CA certificates copied and updated successfully.
+2025-11-01T10:39:42.7508830Z Starting periodic command scheduler: cron.
+2025-11-01T10:39:42.8659642Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-11-01T10:39:42.8661228Z Could not find operation ID in manifest. Generating an operation id...
+2025-11-01T10:39:42.8662689Z Build Operation ID: 151f5dac-1755-46f9-bb21-8cc6ef7394de
+2025-11-01T10:39:43.7282652Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-11-01T10:39:43.7687828Z Writing output script to '/opt/startup/startup.sh'
+2025-11-01T10:39:43.8615816Z Running #!/bin/sh
+2025-11-01T10:39:43.8616908Z 
+2025-11-01T10:39:43.8616949Z # Enter the source directory to make sure the script runs where the user expects
+2025-11-01T10:39:43.8616989Z cd "/home/site/wwwroot"
+2025-11-01T10:39:43.8617011Z 
+2025-11-01T10:39:43.8617037Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-11-01T10:39:43.8617062Z if [ -z "$PORT" ]; then
+2025-11-01T10:39:43.8617084Z 		export PORT=8080
+2025-11-01T10:39:43.8617126Z fi
+2025-11-01T10:39:43.8617148Z 
+2025-11-01T10:39:43.8628853Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-11-01T10:39:47.9543845Z npm info using npm@10.9.2
+2025-11-01T10:39:47.9566593Z npm info using node@v22.17.0
+2025-11-01T10:40:10.9270638Z Prisma schema loaded from prisma/schema.prisma
+2025-11-01T10:40:11.2048027Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-11-01T10:40:12.8198922Z 
+2025-11-01T10:40:12.8201850Z 8 migrations found in prisma/migrations
+2025-11-01T10:40:12.8203101Z 
+2025-11-01T10:40:13.8754748Z 
+2025-11-01T10:40:13.8843854Z No pending migrations to apply.
+2025-11-01T10:40:13.9596194Z npm http fetch GET 200 https://registry.npmjs.org/npm 912ms
+2025-11-01T10:40:13.9702536Z npm notice
+2025-11-01T10:40:13.9702755Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-11-01T10:40:13.9702793Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-11-01T10:40:13.9702820Z npm notice To update run: npm install -g npm@11.6.2
+2025-11-01T10:40:13.9702841Z npm notice
+2025-11-01T10:40:13.9762589Z npm info ok
+2025-11-01T10:40:14.6217729Z npm info using npm@10.9.2
+2025-11-01T10:40:14.6289336Z npm info using node@v22.17.0
+2025-11-01T10:40:14.8364520Z 
+2025-11-01T10:40:14.8365689Z > shared-thread@0.1.0 start
+2025-11-01T10:40:14.8365738Z > next start -p ${PORT:-3000}
+2025-11-01T10:40:14.8365768Z 
+2025-11-01T10:40:16.9808229Z    ▲ Next.js 15.5.6
+2025-11-01T10:40:16.9895967Z    - Local:        http://localhost:8080
+2025-11-01T10:40:16.9910619Z    - Network:      http://169.254.130.3:8080
+2025-11-01T10:40:16.9926319Z 
+2025-11-01T10:40:17.0024393Z  ✓ Starting...
+2025-11-01T10:40:25.8753342Z  ✓ Ready in 10.3s
+2025-11-01T10:45:08.7362765Z    _____                               
+2025-11-01T10:45:08.7373680Z   /  _  \ __________ _________   ____  
+2025-11-01T10:45:08.7373771Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-11-01T10:45:08.7373807Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-11-01T10:45:08.7373835Z \____|__  /_____ \____/ |__|    \___  >
+2025-11-01T10:45:08.7373905Z         \/      \/                  \/ 
+2025-11-01T10:45:08.7373937Z A P P   S E R V I C E   O N   L I N U X
+2025-11-01T10:45:08.7373962Z 
+2025-11-01T10:45:08.7373990Z Documentation: http://aka.ms/webapp-linux
+2025-11-01T10:45:08.7374019Z NodeJS quickstart: https://aka.ms/node-qs
+2025-11-01T10:45:08.7374049Z NodeJS Version : v22.17.0
+2025-11-01T10:45:08.7374096Z Note: Any data outside '/home' is not persisted
+2025-11-01T10:45:08.7374121Z 
+2025-11-01T10:45:14.8071093Z Starting OpenBSD Secure Shell server: sshd.
+2025-11-01T10:45:14.8815935Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-11-01T10:45:14.9695826Z Updating certificates in /etc/ssl/certs...
+2025-11-01T10:46:30.3077963Z    _____                               
+2025-11-01T10:46:30.3079964Z   /  _  \ __________ _________   ____  
+2025-11-01T10:46:30.3080021Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-11-01T10:46:30.3080048Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-11-01T10:46:30.3080073Z \____|__  /_____ \____/ |__|    \___  >
+2025-11-01T10:46:30.3080109Z         \/      \/                  \/ 
+2025-11-01T10:46:30.3080161Z A P P   S E R V I C E   O N   L I N U X
+2025-11-01T10:46:30.3080185Z 
+2025-11-01T10:46:30.3080216Z Documentation: http://aka.ms/webapp-linux
+2025-11-01T10:46:30.3080247Z NodeJS quickstart: https://aka.ms/node-qs
+2025-11-01T10:46:30.3080271Z NodeJS Version : v22.17.0
+2025-11-01T10:46:30.3080297Z Note: Any data outside '/home' is not persisted
+2025-11-01T10:46:30.3080320Z 
+2025-11-01T10:46:32.7858129Z Starting OpenBSD Secure Shell server: sshd.
+2025-11-01T10:46:32.8068611Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-11-01T10:46:32.9111967Z Updating certificates in /etc/ssl/certs...
+2025-11-01T10:46:45.7306665Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-11-01T10:46:45.7878674Z 4 added, 0 removed; done.
+2025-11-01T10:46:45.7978758Z Running hooks in /etc/ca-certificates/update.d...
+2025-11-01T10:46:45.8088466Z done.
+2025-11-01T10:46:45.8371621Z CA certificates copied and updated successfully.
+2025-11-01T10:46:46.0484155Z Starting periodic command scheduler: cron.
+2025-11-01T10:46:46.3694254Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-11-01T10:46:46.3695036Z Could not find operation ID in manifest. Generating an operation id...
+2025-11-01T10:46:46.3695086Z Build Operation ID: aadfcb54-1005-4b4c-a782-cdae1a393a48
+2025-11-01T10:46:46.8825208Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-11-01T10:46:46.9375619Z Writing output script to '/opt/startup/startup.sh'
+2025-11-01T10:46:47.0613445Z Running #!/bin/sh
+2025-11-01T10:46:47.0614101Z 
+2025-11-01T10:46:47.0614149Z # Enter the source directory to make sure the script runs where the user expects
+2025-11-01T10:46:47.0614199Z cd "/home/site/wwwroot"
+2025-11-01T10:46:47.0614311Z 
+2025-11-01T10:46:47.0614343Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-11-01T10:46:47.0614370Z if [ -z "$PORT" ]; then
+2025-11-01T10:46:47.0614394Z 		export PORT=8080
+2025-11-01T10:46:47.0614418Z fi
+2025-11-01T10:46:47.0614441Z 
+2025-11-01T10:46:47.0685339Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-11-01T10:46:49.9587048Z npm info using npm@10.9.2
+2025-11-01T10:46:49.9840728Z npm info using node@v22.17.0
+2025-11-01T10:47:17.5520549Z Prisma schema loaded from prisma/schema.prisma
+2025-11-01T10:47:17.6929541Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-11-01T10:47:23.0802764Z 
+2025-11-01T10:47:23.9432322Z 8 migrations found in prisma/migrations
+2025-11-01T10:47:23.9432559Z 
+2025-11-01T10:47:33.7743881Z 
+2025-11-01T10:47:33.7744270Z No pending migrations to apply.
+2025-11-01T10:47:33.7744888Z 
+2025-11-01T10:47:33.7744932Z > shared-thread@0.1.0 start
+2025-11-01T10:47:33.7744960Z > next start -p ${PORT:-3000}
+2025-11-01T10:47:33.7744985Z 
+2025-11-01T10:47:33.7745362Z npm http fetch GET 200 https://registry.npmjs.org/npm 1834ms
+2025-11-01T10:47:33.7745509Z npm notice
+2025-11-01T10:47:33.7745543Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-11-01T10:47:33.7745571Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-11-01T10:47:33.7745597Z npm notice To update run: npm install -g npm@11.6.2
+2025-11-01T10:47:33.7745619Z npm notice
+2025-11-01T10:47:33.7745641Z npm info ok
+2025-11-01T10:47:33.7745690Z npm info using npm@10.9.2
+2025-11-01T10:47:33.7745713Z npm info using node@v22.17.0
+2025-11-01T10:47:40.0103789Z    ▲ Next.js 15.5.6
+2025-11-01T10:47:40.0282143Z    - Local:        http://localhost:8080
+2025-11-01T10:47:40.0282409Z    - Network:      http://169.254.130.2:8080
+2025-11-01T10:47:40.0282442Z 
+2025-11-01T10:47:40.0282477Z  ✓ Starting...
+2025-11-01T10:47:50.9309532Z  ✓ Ready in 17.1s
+2025-11-01T11:00:53.8492201Z    _____                               
+2025-11-01T11:00:53.8502609Z   /  _  \ __________ _________   ____  
+2025-11-01T11:00:53.8503178Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-11-01T11:00:53.8503225Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-11-01T11:00:53.8503256Z \____|__  /_____ \____/ |__|    \___  >
+2025-11-01T11:00:53.8503327Z         \/      \/                  \/ 
+2025-11-01T11:00:53.8503353Z A P P   S E R V I C E   O N   L I N U X
+2025-11-01T11:00:53.8503376Z 
+2025-11-01T11:00:53.8503407Z Documentation: http://aka.ms/webapp-linux
+2025-11-01T11:00:53.8503436Z NodeJS quickstart: https://aka.ms/node-qs
+2025-11-01T11:00:53.8503461Z NodeJS Version : v22.17.0
+2025-11-01T11:00:53.8503486Z Note: Any data outside '/home' is not persisted
+2025-11-01T11:00:53.8503530Z 
+2025-11-01T11:00:55.6393298Z Starting OpenBSD Secure Shell server: sshd.
+2025-11-01T11:00:55.6611588Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-11-01T11:00:55.7274506Z Updating certificates in /etc/ssl/certs...
+2025-11-01T11:01:09.8890051Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-11-01T11:01:09.9618514Z 4 added, 0 removed; done.
+2025-11-01T11:01:09.9738824Z Running hooks in /etc/ca-certificates/update.d...
+2025-11-01T11:01:10.0197955Z done.
+2025-11-01T11:01:10.1340513Z CA certificates copied and updated successfully.
+2025-11-01T11:01:10.6637565Z Starting periodic command scheduler: cron.
+2025-11-01T11:01:11.1799322Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-11-01T11:01:11.2189614Z Could not find operation ID in manifest. Generating an operation id...
+2025-11-01T11:01:11.2190125Z Build Operation ID: 3f07ca6c-bb29-4949-9090-6e55b60e9f16
+2025-11-01T11:01:11.7119816Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-11-01T11:01:11.7608564Z Writing output script to '/opt/startup/startup.sh'
+2025-11-01T11:01:11.8629252Z Running #!/bin/sh
+2025-11-01T11:01:11.8629677Z 
+2025-11-01T11:01:11.8629806Z # Enter the source directory to make sure the script runs where the user expects
+2025-11-01T11:01:11.8629851Z cd "/home/site/wwwroot"
+2025-11-01T11:01:11.8629875Z 
+2025-11-01T11:01:11.8629905Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-11-01T11:01:11.8629932Z if [ -z "$PORT" ]; then
+2025-11-01T11:01:11.8629956Z 		export PORT=8080
+2025-11-01T11:01:11.8629979Z fi
+2025-11-01T11:01:11.8630003Z 
+2025-11-01T11:01:11.8639831Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-11-01T11:01:13.9863656Z npm info using npm@10.9.2
+2025-11-01T11:01:13.9875929Z npm info using node@v22.17.0
+2025-11-01T11:01:38.6861092Z Prisma schema loaded from prisma/schema.prisma
+2025-11-01T11:01:38.7807879Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-11-01T11:01:42.0285269Z 
+2025-11-01T11:01:42.0320422Z 8 migrations found in prisma/migrations
+2025-11-01T11:01:42.0510969Z 
+2025-11-01T11:01:43.5389673Z 
+2025-11-01T11:01:43.5566911Z No pending migrations to apply.
+2025-11-01T11:01:43.6944061Z npm http fetch GET 200 https://registry.npmjs.org/npm 1996ms
+2025-11-01T11:01:43.7106726Z npm notice
+2025-11-01T11:01:43.7106857Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-11-01T11:01:43.7106891Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-11-01T11:01:43.7106917Z npm notice To update run: npm install -g npm@11.6.2
+2025-11-01T11:01:43.7106941Z npm notice
+2025-11-01T11:01:43.7106964Z npm info ok
+2025-11-01T11:01:44.5643813Z npm info using npm@10.9.2
+2025-11-01T11:01:44.5644404Z npm info using node@v22.17.0
+2025-11-01T11:01:44.7933714Z 
+2025-11-01T11:01:44.7934385Z > shared-thread@0.1.0 start
+2025-11-01T11:01:44.7949269Z > next start -p ${PORT:-3000}
+2025-11-01T11:01:44.7949374Z 
+2025-11-01T11:01:49.0558389Z    ▲ Next.js 15.5.6
+2025-11-01T11:01:49.0758103Z    - Local:        http://localhost:8080
+2025-11-01T11:01:49.0758343Z    - Network:      http://169.254.130.4:8080
+2025-11-01T11:01:49.0758378Z 
+2025-11-01T11:01:49.0758415Z  ✓ Starting...
+2025-11-01T11:02:06.3679615Z  ✓ Ready in 20.4s

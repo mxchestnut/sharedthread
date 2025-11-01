@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>47c06a94-1e69-4000-9755-66003b5bbd43</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"840fa78bbe1d4ef87e83f0575f544bf159371f84","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"fix: use proper Providers component for NextAuth SessionProvider"}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-11-01T11:00:19.5094013Z</lastSuccessEndTime>
+  <receivedTime>2025-11-01T11:00:15.7091095Z</receivedTime>
+  <startTime>2025-11-01T11:00:17.0872765Z</startTime>
+  <endTime>2025-11-01T11:00:19.5094013Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

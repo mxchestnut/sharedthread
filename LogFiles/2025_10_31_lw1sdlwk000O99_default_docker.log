@@ -856,3 +856,607 @@ e.js:1:4829)
 2025-10-31T15:05:16.7637278Z 
 2025-10-31T15:05:16.7637311Z  ✓ Starting...
 2025-10-31T15:05:24.7154013Z  ✓ Ready in 9.9s
+2025-10-31T15:20:25.2722978Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T15:20:25.2723652Z     at w (.next/server/chunks/1637.js:1:3453)
+2025-10-31T15:20:25.2723683Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T15:20:25.2723706Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T15:20:25.2723900Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T15:20:25.2723926Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T15:20:25.2723949Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216) {
+2025-10-31T15:20:25.2723972Z   errorMessage: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T15:20:25.2724288Z   errorStack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T15:20:25.2724315Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3453)\n' +
+2025-10-31T15:20:25.2724340Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T15:20:25.2724407Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T15:20:25.2724433Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T15:20:25.2724460Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T15:20:25.2724514Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T15:20:25.2724539Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T15:20:25.2724568Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T15:20:25.2724592Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T15:20:25.2724618Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T15:20:25.2724639Z   apiRoute: '/api/auth/login'
+2025-10-31T15:20:25.2724687Z }
+2025-10-31T15:20:26.5425042Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T15:20:26.5425603Z     at w (.next/server/chunks/1637.js:1:3453)
+2025-10-31T15:20:26.5425645Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T15:20:26.5425674Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T15:20:26.5425698Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T15:20:26.5425721Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T15:20:26.5425745Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T15:20:27.4128822Z Login error details: {
+2025-10-31T15:20:27.4129737Z   message: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T15:20:27.4130030Z   stack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T15:20:27.4130058Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3453)\n' +
+2025-10-31T15:20:27.4130082Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T15:20:27.4130107Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T15:20:27.4130130Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T15:20:27.4130329Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T15:20:27.4130357Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T15:20:27.4130381Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T15:20:27.4130411Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T15:20:27.4130436Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T15:20:27.4130494Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T15:20:27.4130519Z   error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T15:20:27.4130542Z       at w (.next/server/chunks/1637.js:1:3453)
+2025-10-31T15:20:27.4130565Z       at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T15:20:27.4130588Z       at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T15:20:27.4130612Z       at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T15:20:27.4130654Z       at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T15:20:27.4130678Z       at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T15:20:27.4130699Z }
+2025-10-31T15:20:34.8864565Z    _____                               
+2025-10-31T15:20:34.8867443Z   /  _  \ __________ _________   ____  
+2025-10-31T15:20:34.8867529Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-10-31T15:20:34.8867560Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-10-31T15:20:34.8867589Z \____|__  /_____ \____/ |__|    \___  >
+2025-10-31T15:20:34.8867719Z         \/      \/                  \/ 
+2025-10-31T15:20:34.8867753Z A P P   S E R V I C E   O N   L I N U X
+2025-10-31T15:20:34.8867780Z 
+2025-10-31T15:20:34.8867858Z Documentation: http://aka.ms/webapp-linux
+2025-10-31T15:20:34.8867891Z NodeJS quickstart: https://aka.ms/node-qs
+2025-10-31T15:20:34.8867920Z NodeJS Version : v22.17.0
+2025-10-31T15:20:34.8867950Z Note: Any data outside '/home' is not persisted
+2025-10-31T15:20:34.8867976Z 
+2025-10-31T15:20:41.7693388Z Starting OpenBSD Secure Shell server: sshd.
+2025-10-31T15:20:41.8547074Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-10-31T15:20:41.9844674Z Updating certificates in /etc/ssl/certs...
+2025-10-31T15:21:01.8766561Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-10-31T15:21:01.9424798Z 4 added, 0 removed; done.
+2025-10-31T15:21:01.9445126Z Running hooks in /etc/ca-certificates/update.d...
+2025-10-31T15:21:01.9718408Z done.
+2025-10-31T15:21:02.0450946Z CA certificates copied and updated successfully.
+2025-10-31T15:21:02.5097346Z Starting periodic command scheduler: cron.
+2025-10-31T15:21:02.8427940Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-10-31T15:21:02.8428718Z Could not find operation ID in manifest. Generating an operation id...
+2025-10-31T15:21:02.8428767Z Build Operation ID: cfe50b05-ac2f-4224-866c-fc2cf62d0ecd
+2025-10-31T15:21:03.3130965Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-10-31T15:21:03.3892628Z Writing output script to '/opt/startup/startup.sh'
+2025-10-31T15:21:03.5017070Z Running #!/bin/sh
+2025-10-31T15:21:03.5017734Z 
+2025-10-31T15:21:03.5017788Z # Enter the source directory to make sure the script runs where the user expects
+2025-10-31T15:21:03.5017841Z cd "/home/site/wwwroot"
+2025-10-31T15:21:03.5017871Z 
+2025-10-31T15:21:03.5017967Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-10-31T15:21:03.5018000Z if [ -z "$PORT" ]; then
+2025-10-31T15:21:03.5018027Z 		export PORT=8080
+2025-10-31T15:21:03.5018053Z fi
+2025-10-31T15:21:03.5018080Z 
+2025-10-31T15:21:03.5027446Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-10-31T15:21:05.6038041Z npm info using npm@10.9.2
+2025-10-31T15:21:05.6047358Z npm info using node@v22.17.0
+2025-10-31T15:21:33.2682177Z Prisma schema loaded from prisma/schema.prisma
+2025-10-31T15:21:33.3058912Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-10-31T15:21:34.7414729Z 
+2025-10-31T15:21:34.7433285Z 7 migrations found in prisma/migrations
+2025-10-31T15:21:34.7519281Z 
+2025-10-31T15:21:35.8395092Z 
+2025-10-31T15:21:35.8599421Z No pending migrations to apply.
+2025-10-31T15:21:35.9473015Z npm http fetch GET 200 https://registry.npmjs.org/npm 1349ms
+2025-10-31T15:21:35.9645273Z npm notice
+2025-10-31T15:21:35.9645949Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-10-31T15:21:35.9646014Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-10-31T15:21:35.9646045Z npm notice To update run: npm install -g npm@11.6.2
+2025-10-31T15:21:35.9646074Z npm notice
+2025-10-31T15:21:35.9749154Z npm info ok
+2025-10-31T15:21:36.8266394Z npm info using npm@10.9.2
+2025-10-31T15:21:36.8285565Z npm info using node@v22.17.0
+2025-10-31T15:21:37.0101770Z 
+2025-10-31T15:21:37.0268220Z > shared-thread@0.1.0 start
+2025-10-31T15:21:37.0283649Z > next start -p ${PORT:-3000}
+2025-10-31T15:21:37.0384094Z 
+2025-10-31T15:21:39.3318874Z    ▲ Next.js 15.5.6
+2025-10-31T15:21:39.3485059Z    - Local:        http://localhost:8080
+2025-10-31T15:21:39.3485325Z    - Network:      http://169.254.130.2:8080
+2025-10-31T15:21:39.3485439Z 
+2025-10-31T15:21:39.3485479Z  ✓ Starting...
+2025-10-31T15:21:46.6678891Z  ✓ Ready in 8.8s
+2025-10-31T15:25:17.4482473Z    _____                               
+2025-10-31T15:25:17.4571528Z   /  _  \ __________ _________   ____  
+2025-10-31T15:25:17.4571679Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-10-31T15:25:17.4571716Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-10-31T15:25:17.4571745Z \____|__  /_____ \____/ |__|    \___  >
+2025-10-31T15:25:17.4571773Z         \/      \/                  \/ 
+2025-10-31T15:25:17.4571859Z A P P   S E R V I C E   O N   L I N U X
+2025-10-31T15:25:17.4571890Z 
+2025-10-31T15:25:17.4571922Z Documentation: http://aka.ms/webapp-linux
+2025-10-31T15:25:17.4571953Z NodeJS quickstart: https://aka.ms/node-qs
+2025-10-31T15:25:17.4571986Z NodeJS Version : v22.17.0
+2025-10-31T15:25:17.4572016Z Note: Any data outside '/home' is not persisted
+2025-10-31T15:25:17.4572042Z 
+2025-10-31T15:25:20.0669806Z Starting OpenBSD Secure Shell server: sshd.
+2025-10-31T15:25:20.1052144Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-10-31T15:25:20.1840637Z Updating certificates in /etc/ssl/certs...
+2025-10-31T15:25:34.7227527Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-10-31T15:25:34.8820098Z 4 added, 0 removed; done.
+2025-10-31T15:25:34.8831833Z Running hooks in /etc/ca-certificates/update.d...
+2025-10-31T15:25:34.9685512Z done.
+2025-10-31T15:25:34.9882854Z CA certificates copied and updated successfully.
+2025-10-31T15:25:35.2850651Z Starting periodic command scheduler: cron.
+2025-10-31T15:25:35.5950112Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-10-31T15:25:35.6149936Z Could not find operation ID in manifest. Generating an operation id...
+2025-10-31T15:25:35.6317105Z Build Operation ID: 38adbb8b-83ca-4d61-b468-9fb6e30f9b2e
+2025-10-31T15:25:36.0675834Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-10-31T15:25:36.1315730Z Writing output script to '/opt/startup/startup.sh'
+2025-10-31T15:25:36.2357496Z Running #!/bin/sh
+2025-10-31T15:25:36.2358292Z 
+2025-10-31T15:25:36.2358447Z # Enter the source directory to make sure the script runs where the user expects
+2025-10-31T15:25:36.2358493Z cd "/home/site/wwwroot"
+2025-10-31T15:25:36.2358520Z 
+2025-10-31T15:25:36.2358548Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-10-31T15:25:36.2358576Z if [ -z "$PORT" ]; then
+2025-10-31T15:25:36.2358603Z 		export PORT=8080
+2025-10-31T15:25:36.2358628Z fi
+2025-10-31T15:25:36.2358653Z 
+2025-10-31T15:25:36.2387875Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-10-31T15:25:38.6319957Z npm info using npm@10.9.2
+2025-10-31T15:25:38.6329633Z npm info using node@v22.17.0
+2025-10-31T15:26:04.6104783Z Prisma schema loaded from prisma/schema.prisma
+2025-10-31T15:26:04.7531146Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-10-31T15:26:08.7655691Z 
+2025-10-31T15:26:08.7667977Z 7 migrations found in prisma/migrations
+2025-10-31T15:26:08.7938918Z 
+2025-10-31T15:26:09.9815907Z 
+2025-10-31T15:26:09.9837586Z No pending migrations to apply.
+2025-10-31T15:26:10.0866187Z npm http fetch GET 200 https://registry.npmjs.org/npm 1377ms
+2025-10-31T15:26:10.1220666Z npm notice
+2025-10-31T15:26:10.1220987Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-10-31T15:26:10.1221405Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-10-31T15:26:10.1221451Z npm notice To update run: npm install -g npm@11.6.2
+2025-10-31T15:26:10.1221479Z npm notice
+2025-10-31T15:26:10.1221506Z npm info ok
+2025-10-31T15:26:11.4227795Z npm info using npm@10.9.2
+2025-10-31T15:26:11.4306947Z npm info using node@v22.17.0
+2025-10-31T15:26:11.7069262Z 
+2025-10-31T15:26:11.7070091Z > shared-thread@0.1.0 start
+2025-10-31T15:26:11.7070138Z > next start -p ${PORT:-3000}
+2025-10-31T15:26:11.7070177Z 
+2025-10-31T15:26:15.3860591Z    ▲ Next.js 15.5.6
+2025-10-31T15:26:15.3883202Z    - Local:        http://localhost:8080
+2025-10-31T15:26:15.3983054Z    - Network:      http://169.254.130.3:8080
+2025-10-31T15:26:15.3983536Z 
+2025-10-31T15:26:15.3983588Z  ✓ Starting...
+2025-10-31T15:26:24.8944709Z  ✓ Ready in 11.9s
+2025-10-31T15:32:31.1978536Z    _____                               
+2025-10-31T15:32:31.3515573Z   /  _  \ __________ _________   ____  
+2025-10-31T15:32:31.3515889Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-10-31T15:32:31.3515924Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-10-31T15:32:31.3515953Z \____|__  /_____ \____/ |__|    \___  >
+2025-10-31T15:32:31.3516000Z         \/      \/                  \/ 
+2025-10-31T15:32:31.3516027Z A P P   S E R V I C E   O N   L I N U X
+2025-10-31T15:32:31.3516052Z 
+2025-10-31T15:32:31.3516086Z Documentation: http://aka.ms/webapp-linux
+2025-10-31T15:32:31.3516143Z NodeJS quickstart: https://aka.ms/node-qs
+2025-10-31T15:32:31.3516171Z NodeJS Version : v22.17.0
+2025-10-31T15:32:31.3516200Z Note: Any data outside '/home' is not persisted
+2025-10-31T15:32:31.3516225Z 
+2025-10-31T15:32:38.0050462Z Starting OpenBSD Secure Shell server: sshd.
+2025-10-31T15:32:38.0636004Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-10-31T15:32:38.2483495Z Updating certificates in /etc/ssl/certs...
+2025-10-31T15:32:59.9618856Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-10-31T15:33:00.0112757Z 4 added, 0 removed; done.
+2025-10-31T15:33:00.0290208Z Running hooks in /etc/ca-certificates/update.d...
+2025-10-31T15:33:00.0290640Z done.
+2025-10-31T15:33:00.0648744Z CA certificates copied and updated successfully.
+2025-10-31T15:33:00.3191623Z Starting periodic command scheduler: cron.
+2025-10-31T15:33:00.5342994Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-10-31T15:33:00.5343419Z Could not find operation ID in manifest. Generating an operation id...
+2025-10-31T15:33:00.5343468Z Build Operation ID: 75aee9d1-699a-4afc-9ac4-166be9b8223a
+2025-10-31T15:33:01.1382176Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-10-31T15:33:01.1741234Z Writing output script to '/opt/startup/startup.sh'
+2025-10-31T15:33:01.2486099Z Running #!/bin/sh
+2025-10-31T15:33:01.2486856Z 
+2025-10-31T15:33:01.2486909Z # Enter the source directory to make sure the script runs where the user expects
+2025-10-31T15:33:01.2486955Z cd "/home/site/wwwroot"
+2025-10-31T15:33:01.2486982Z 
+2025-10-31T15:33:01.2487011Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-10-31T15:33:01.2487049Z if [ -z "$PORT" ]; then
+2025-10-31T15:33:01.2487162Z 		export PORT=8080
+2025-10-31T15:33:01.2487190Z fi
+2025-10-31T15:33:01.2487217Z 
+2025-10-31T15:33:01.2508109Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-10-31T15:33:05.7069755Z npm info using npm@10.9.2
+2025-10-31T15:33:05.8038207Z npm info using node@v22.17.0
+2025-10-31T15:33:41.6387698Z Prisma schema loaded from prisma/schema.prisma
+2025-10-31T15:33:41.6921664Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-10-31T15:33:43.5043385Z 
+2025-10-31T15:33:43.5055351Z 7 migrations found in prisma/migrations
+2025-10-31T15:33:43.5064040Z 
+2025-10-31T15:33:44.5361775Z 
+2025-10-31T15:33:44.5516007Z No pending migrations to apply.
+2025-10-31T15:33:44.6405985Z npm http fetch GET 200 https://registry.npmjs.org/npm 828ms
+2025-10-31T15:33:44.6592895Z npm notice
+2025-10-31T15:33:44.6593491Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-10-31T15:33:44.6593553Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-10-31T15:33:44.6593583Z npm notice To update run: npm install -g npm@11.6.2
+2025-10-31T15:33:44.6593609Z npm notice
+2025-10-31T15:33:44.6669723Z npm info ok
+2025-10-31T15:33:46.1520446Z npm info using npm@10.9.2
+2025-10-31T15:33:46.1617806Z npm info using node@v22.17.0
+2025-10-31T15:33:46.5939431Z 
+2025-10-31T15:33:46.5939917Z > shared-thread@0.1.0 start
+2025-10-31T15:33:46.5939968Z > next start -p ${PORT:-3000}
+2025-10-31T15:33:46.5940004Z 
+2025-10-31T15:33:50.7239082Z    ▲ Next.js 15.5.6
+2025-10-31T15:33:50.7258195Z    - Local:        http://localhost:8080
+2025-10-31T15:33:50.7260157Z    - Network:      http://169.254.130.2:8080
+2025-10-31T15:33:50.7260290Z 
+2025-10-31T15:33:50.7342799Z  ✓ Starting...
+2025-10-31T15:33:59.7768021Z  ✓ Ready in 11.4s
+2025-10-31T15:34:24.8374500Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T15:34:24.8375022Z     at w (.next/server/chunks/1637.js:1:3453)
+2025-10-31T15:34:24.8375052Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T15:34:24.8375074Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T15:34:24.8375097Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T15:34:24.8375121Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T15:34:24.8375144Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216) {
+2025-10-31T15:34:24.8375167Z   errorMessage: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T15:34:24.8375192Z   errorStack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T15:34:24.8375391Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3453)\n' +
+2025-10-31T15:34:24.8375417Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T15:34:24.8375484Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T15:34:24.8375508Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T15:34:24.8375536Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T15:34:24.8382183Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T15:34:24.8382315Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T15:34:24.8382346Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T15:34:24.8385568Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T15:34:24.8385625Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T15:34:24.8385695Z   apiRoute: '/api/auth/login'
+2025-10-31T15:34:24.8385717Z }
+2025-10-31T15:34:25.0036342Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T15:34:25.0037011Z     at w (.next/server/chunks/1637.js:1:3453)
+2025-10-31T15:34:25.0037050Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T15:34:25.0037083Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T15:34:25.0037106Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T15:34:25.0037128Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T15:34:25.0037150Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T15:34:25.0198955Z Login error details: {
+2025-10-31T15:34:25.0199288Z   message: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T15:34:25.0199320Z   stack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T15:34:25.0199344Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3453)\n' +
+2025-10-31T15:34:25.0199368Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T15:34:25.0199394Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T15:34:25.0199417Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T15:34:25.0199442Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T15:34:25.0199469Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T15:34:25.0199492Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T15:34:25.0199518Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T15:34:25.0199572Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T15:34:25.0199596Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T15:34:25.0199620Z   error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T15:34:25.0199641Z       at w (.next/server/chunks/1637.js:1:3453)
+2025-10-31T15:34:25.0199662Z       at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T15:34:25.0199684Z       at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T15:34:25.0199732Z       at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T15:34:25.0199755Z       at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T15:34:25.0199776Z       at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T15:34:25.0199795Z }
+2025-10-31T15:35:46.7307327Z    _____                               
+2025-10-31T15:35:46.7323072Z   /  _  \ __________ _________   ____  
+2025-10-31T15:35:46.7323175Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-10-31T15:35:46.7323207Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-10-31T15:35:46.7323241Z \____|__  /_____ \____/ |__|    \___  >
+2025-10-31T15:35:46.7324282Z         \/      \/                  \/ 
+2025-10-31T15:35:46.7324345Z A P P   S E R V I C E   O N   L I N U X
+2025-10-31T15:35:46.7324373Z 
+2025-10-31T15:35:46.7324410Z Documentation: http://aka.ms/webapp-linux
+2025-10-31T15:35:46.7324443Z NodeJS quickstart: https://aka.ms/node-qs
+2025-10-31T15:35:46.7324473Z NodeJS Version : v22.17.0
+2025-10-31T15:35:46.7324527Z Note: Any data outside '/home' is not persisted
+2025-10-31T15:35:46.7324556Z 
+2025-10-31T15:35:49.7453744Z Starting OpenBSD Secure Shell server: sshd.
+2025-10-31T15:35:49.8126015Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-10-31T15:35:50.3482127Z Updating certificates in /etc/ssl/certs...
+2025-10-31T15:36:15.5832381Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-10-31T15:36:15.6592389Z 4 added, 0 removed; done.
+2025-10-31T15:36:15.6600252Z Running hooks in /etc/ca-certificates/update.d...
+2025-10-31T15:36:15.6698487Z done.
+2025-10-31T15:36:15.7259083Z CA certificates copied and updated successfully.
+2025-10-31T15:36:16.0606677Z Starting periodic command scheduler: cron.
+2025-10-31T15:36:16.4255754Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-10-31T15:36:16.4256469Z Could not find operation ID in manifest. Generating an operation id...
+2025-10-31T15:36:16.4291349Z Build Operation ID: f673e6bc-47b8-4ba8-8e60-c2a7079aa5a5
+2025-10-31T15:36:16.8020402Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-10-31T15:36:16.8803733Z Writing output script to '/opt/startup/startup.sh'
+2025-10-31T15:36:17.0377992Z Running #!/bin/sh
+2025-10-31T15:36:17.0378739Z 
+2025-10-31T15:36:17.0378795Z # Enter the source directory to make sure the script runs where the user expects
+2025-10-31T15:36:17.0378836Z cd "/home/site/wwwroot"
+2025-10-31T15:36:17.0378864Z 
+2025-10-31T15:36:17.0378902Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-10-31T15:36:17.0379012Z if [ -z "$PORT" ]; then
+2025-10-31T15:36:17.0379041Z 		export PORT=8080
+2025-10-31T15:36:17.0379067Z fi
+2025-10-31T15:36:17.0379092Z 
+2025-10-31T15:36:17.0471490Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-10-31T15:36:20.0443776Z npm info using npm@10.9.2
+2025-10-31T15:36:20.0630094Z npm info using node@v22.17.0
+2025-10-31T15:36:43.2903049Z Prisma schema loaded from prisma/schema.prisma
+2025-10-31T15:36:43.3904533Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-10-31T15:36:45.3917843Z 
+2025-10-31T15:36:45.3933060Z 7 migrations found in prisma/migrations
+2025-10-31T15:36:45.4024705Z 
+2025-10-31T15:36:46.8476951Z 
+2025-10-31T15:36:46.8484697Z No pending migrations to apply.
+2025-10-31T15:36:47.0486530Z npm http fetch GET 200 https://registry.npmjs.org/npm 1754ms
+2025-10-31T15:36:47.0683845Z npm notice
+2025-10-31T15:36:47.0684755Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-10-31T15:36:47.0684824Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-10-31T15:36:47.0684856Z npm notice To update run: npm install -g npm@11.6.2
+2025-10-31T15:36:47.0684886Z npm notice
+2025-10-31T15:36:47.0719136Z npm info ok
+2025-10-31T15:36:47.8192974Z npm info using npm@10.9.2
+2025-10-31T15:36:47.8371701Z npm info using node@v22.17.0
+2025-10-31T15:36:48.1988870Z 
+2025-10-31T15:36:48.1989767Z > shared-thread@0.1.0 start
+2025-10-31T15:36:48.1991987Z > next start -p ${PORT:-3000}
+2025-10-31T15:36:48.1992124Z 
+2025-10-31T15:36:53.7648225Z    ▲ Next.js 15.5.6
+2025-10-31T15:36:53.7766544Z    - Local:        http://localhost:8080
+2025-10-31T15:36:53.7766749Z    - Network:      http://169.254.130.3:8080
+2025-10-31T15:36:53.7766836Z 
+2025-10-31T15:36:53.7766872Z  ✓ Starting...
+2025-10-31T15:37:06.6092729Z  ✓ Ready in 16.4s
+2025-10-31T16:24:57.7101796Z Step 1: API route accessible
+2025-10-31T16:24:57.7133262Z Step 2: Attempting to import prisma...
+2025-10-31T16:24:57.7248247Z Step 3: Prisma imported successfully
+2025-10-31T16:24:57.7310572Z Step 4: Checking prisma object: true
+2025-10-31T16:24:57.7852471Z Step 5: Checking prisma.userss: true
+2025-10-31T16:24:57.7866588Z Step 6: Testing basic connection...
+2025-10-31T16:25:00.3687932Z Step 7: Connection test successful: [ { test: 1 } ]
+2025-10-31T16:26:10.9151812Z Step 1: API route accessible
+2025-10-31T16:26:10.9336869Z Step 2: Attempting to import prisma...
+2025-10-31T16:26:10.9359438Z Step 3: Prisma imported successfully
+2025-10-31T16:26:10.9528521Z Step 4: Checking prisma object: true
+2025-10-31T16:26:10.9537908Z Step 5: Checking prisma.userss: true
+2025-10-31T16:26:10.9543043Z Step 6: Testing basic connection...
+2025-10-31T16:26:12.5291729Z Step 7: Connection test successful: [ { test: 1 } ]
+2025-10-31T16:26:27.2486494Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T16:26:27.2487438Z     at w (.next/server/chunks/1637.js:1:3457)
+2025-10-31T16:26:27.2487485Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T16:26:27.2487510Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T16:26:27.2487533Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T16:26:27.2487556Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T16:26:27.2487579Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216) {
+2025-10-31T16:26:27.2487603Z   errorMessage: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T16:26:27.2487628Z   errorStack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T16:26:27.2487652Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3457)\n' +
+2025-10-31T16:26:27.2487676Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T16:26:27.2487738Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T16:26:27.2487762Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T16:26:27.2487790Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T16:26:27.2487843Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T16:26:27.2487868Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T16:26:27.2487896Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T16:26:27.2488086Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T16:26:27.2488116Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T16:26:27.2488161Z   apiRoute: '/api/auth/login'
+2025-10-31T16:26:27.2488182Z }
+2025-10-31T16:26:27.4579050Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T16:26:27.4579781Z     at w (.next/server/chunks/1637.js:1:3457)
+2025-10-31T16:26:27.4579827Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T16:26:27.4579851Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T16:26:27.4579884Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T16:26:27.4579907Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T16:26:27.4579930Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T16:26:27.4739652Z Login error details: {
+2025-10-31T16:26:27.4739969Z   message: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T16:26:27.4739999Z   stack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T16:26:27.4740023Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3457)\n' +
+2025-10-31T16:26:27.4740048Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T16:26:27.4740071Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T16:26:27.4740094Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T16:26:27.4740119Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T16:26:27.4740144Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T16:26:27.4740166Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T16:26:27.4740192Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T16:26:27.4740237Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T16:26:27.4740261Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T16:26:27.4740283Z   error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T16:26:27.4740305Z       at w (.next/server/chunks/1637.js:1:3457)
+2025-10-31T16:26:27.4740326Z       at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T16:26:27.4740348Z       at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T16:26:27.4740370Z       at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T16:26:27.4740391Z       at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T16:26:27.4740413Z       at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T16:26:27.4740432Z }
+2025-10-31T16:26:38.7578219Z Debug: Starting Prisma import test...
+2025-10-31T16:26:38.7645453Z Debug: PrismaClient imported successfully
+2025-10-31T16:26:38.7835744Z Debug: PrismaClient instance created
+2025-10-31T16:26:38.7836697Z Debug: prisma.users exists: true
+2025-10-31T16:26:38.7876603Z Debug: prisma.users.findUnique exists: true
+2025-10-31T16:26:39.3932662Z Debug: Database connected successfully
+2025-10-31T16:26:39.4952393Z Debug: User count query successful: 3
+2025-10-31T16:26:39.5996436Z Debug: Database disconnected
+2025-10-31T16:31:59.9700515Z Step 1: API route accessible
+2025-10-31T16:31:59.9262094Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T16:32:00.2577815Z     at w (.next/server/chunks/1637.js:1:3457)
+2025-10-31T16:32:00.2578126Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T16:32:00.2578198Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T16:32:00.2578274Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T16:32:00.2578327Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T16:32:00.2578379Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216) {
+2025-10-31T16:32:00.2578495Z   errorMessage: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T16:32:00.2578577Z   errorStack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T16:32:00.2578641Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3457)\n' +
+2025-10-31T16:32:00.2578700Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T16:32:00.2578759Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T16:32:00.2578815Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T16:32:00.2578894Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T16:32:00.2578995Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T16:32:00.2579056Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T16:32:00.2579218Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T16:32:00.2579280Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T16:32:00.2579339Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T16:32:00.2579401Z   apiRoute: '/api/auth/login'
+2025-10-31T16:32:00.2579437Z }
+2025-10-31T16:32:00.2579495Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T16:32:00.2579542Z     at w (.next/server/chunks/1637.js:1:3457)
+2025-10-31T16:32:00.2579591Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T16:32:00.2579640Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T16:32:00.2579713Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T16:32:00.2579765Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T16:32:00.2579815Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T16:32:00.2579856Z Login error details: {
+2025-10-31T16:32:00.2579916Z   message: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T16:32:00.2579972Z   stack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T16:32:00.2580027Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3457)\n' +
+2025-10-31T16:32:00.2580091Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T16:32:00.2580171Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T16:32:00.2580226Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T16:32:00.2592136Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T16:32:00.2592379Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T16:32:00.2593195Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T16:32:00.2593355Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T16:32:00.2593419Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T16:32:00.2593481Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T16:32:00.2593539Z   error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T16:32:00.2593589Z       at w (.next/server/chunks/1637.js:1:3457)
+2025-10-31T16:32:00.2593675Z       at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T16:32:00.2593729Z       at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T16:32:00.2593783Z       at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T16:32:00.2593837Z       at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T16:32:00.2593891Z       at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T16:32:00.2593928Z }
+2025-10-31T16:32:00.2597814Z Step 2: Attempting to import prisma...
+2025-10-31T16:32:00.2597998Z Step 3: Prisma imported successfully
+2025-10-31T16:32:00.2598058Z Step 4: Checking prisma object: true
+2025-10-31T16:32:00.2598104Z Step 5: Checking prisma.userss: true
+2025-10-31T16:32:00.2598150Z Step 6: Testing basic connection...
+2025-10-31T16:32:08.1408397Z Step 7: Connection test successful: [ { test: 1 } ]
+2025-10-31T16:32:19.2561659Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T16:32:19.2562490Z     at w (.next/server/chunks/1637.js:1:3457)
+2025-10-31T16:32:19.2562557Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T16:32:19.2562611Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T16:32:19.2562667Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T16:32:19.2562916Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T16:32:19.2562980Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216) {
+2025-10-31T16:32:19.2563041Z   errorMessage: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T16:32:19.2563125Z   errorStack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T16:32:19.2563185Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3457)\n' +
+2025-10-31T16:32:19.2563307Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T16:32:19.2563411Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T16:32:19.2563472Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T16:32:19.2563646Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T16:32:19.2563722Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T16:32:19.2563980Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T16:32:19.2564060Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T16:32:19.2564125Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T16:32:19.2564189Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T16:32:19.2564237Z   apiRoute: '/api/auth/login'
+2025-10-31T16:32:19.2564275Z }
+2025-10-31T16:32:19.3401489Z [ERROR] Login error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T16:32:19.3402341Z     at w (.next/server/chunks/1637.js:1:3457)
+2025-10-31T16:32:19.3402414Z     at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T16:32:19.3402479Z     at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T16:32:19.3402536Z     at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T16:32:19.3402593Z     at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T16:32:19.3402711Z     at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T16:32:19.3914132Z Login error details: {
+2025-10-31T16:32:19.3915828Z   message: "Cannot read properties of undefined (reading 'findUnique')",
+2025-10-31T16:32:19.3916045Z   stack: "TypeError: Cannot read properties of undefined (reading 'findUnique')\n" +
+2025-10-31T16:32:19.3916117Z     '    at w (/home/site/wwwroot/.next/server/chunks/1637.js:1:3457)\n' +
+2025-10-31T16:32:19.3916180Z     '    at A (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:4829)\n' +
+2025-10-31T16:32:19.3916244Z     '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+2025-10-31T16:32:19.3916307Z     '    at async /home/site/wwwroot/.next/server/chunks/7688.js:15:152769\n' +
+2025-10-31T16:32:19.3916380Z     '    at async rN.do (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:21042)\n' +
+2025-10-31T16:32:19.3916452Z     '    at async rN.handle (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:5:25860)\n' +
+2025-10-31T16:32:19.3916584Z     '    at async k (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:9102)\n' +
+2025-10-31T16:32:19.3916662Z     '    at async rN.handleResponse (/home/site/wwwroot/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:1:105568)\n' +
+2025-10-31T16:32:19.3916725Z     '    at async g (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:10105)\n' +
+2025-10-31T16:32:19.3916789Z     '    at async Q (/home/site/wwwroot/.next/server/app/api/auth/login/route.js:1:11216)',
+2025-10-31T16:32:19.3916848Z   error: TypeError: Cannot read properties of undefined (reading 'findUnique')
+2025-10-31T16:32:19.3916897Z       at w (.next/server/chunks/1637.js:1:3457)
+2025-10-31T16:32:19.3916950Z       at A (.next/server/app/api/auth/login/route.js:1:4829)
+2025-10-31T16:32:19.3917001Z       at async (.next/server/chunks/7688.js:15:152769)
+2025-10-31T16:32:19.3917056Z       at async k (.next/server/app/api/auth/login/route.js:1:9102)
+2025-10-31T16:32:19.3917111Z       at async g (.next/server/app/api/auth/login/route.js:1:10105)
+2025-10-31T16:32:19.3917184Z       at async Q (.next/server/app/api/auth/login/route.js:1:11216)
+2025-10-31T16:32:19.3917224Z }
+2025-10-31T16:34:31.9172114Z    _____                               
+2025-10-31T16:34:31.9293387Z   /  _  \ __________ _________   ____  
+2025-10-31T16:34:31.9293746Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2025-10-31T16:34:31.9293831Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2025-10-31T16:34:31.9293923Z \____|__  /_____ \____/ |__|    \___  >
+2025-10-31T16:34:31.9294033Z         \/      \/                  \/ 
+2025-10-31T16:34:31.9294188Z A P P   S E R V I C E   O N   L I N U X
+2025-10-31T16:34:31.9294289Z 
+2025-10-31T16:34:31.9294356Z Documentation: http://aka.ms/webapp-linux
+2025-10-31T16:34:31.9294443Z NodeJS quickstart: https://aka.ms/node-qs
+2025-10-31T16:34:31.9294500Z NodeJS Version : v22.17.0
+2025-10-31T16:34:31.9294611Z Note: Any data outside '/home' is not persisted
+2025-10-31T16:34:31.9294725Z 
+2025-10-31T16:34:35.3084510Z Starting OpenBSD Secure Shell server: sshd.
+2025-10-31T16:34:35.3565640Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2025-10-31T16:34:35.4696138Z Updating certificates in /etc/ssl/certs...
+2025-10-31T16:34:56.3820189Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-10-31T16:34:56.5410311Z 4 added, 0 removed; done.
+2025-10-31T16:34:56.5410913Z Running hooks in /etc/ca-certificates/update.d...
+2025-10-31T16:34:56.5618980Z done.
+2025-10-31T16:34:56.6845871Z CA certificates copied and updated successfully.
+2025-10-31T16:34:57.3345911Z Starting periodic command scheduler: cron.
+2025-10-31T16:34:59.3006262Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2025-10-31T16:34:59.3161924Z Could not find operation ID in manifest. Generating an operation id...
+2025-10-31T16:34:59.3162828Z Build Operation ID: 0f1261e4-9918-42c1-af77-b16fa870c77a
+2025-10-31T16:34:59.7846871Z Environment Variables for Application Insight's IPA Codeless Configuration exists..
+2025-10-31T16:34:59.8854607Z Writing output script to '/opt/startup/startup.sh'
+2025-10-31T16:35:00.2449800Z Running #!/bin/sh
+2025-10-31T16:35:00.2450562Z 
+2025-10-31T16:35:00.2450804Z # Enter the source directory to make sure the script runs where the user expects
+2025-10-31T16:35:00.2450982Z cd "/home/site/wwwroot"
+2025-10-31T16:35:00.2451046Z 
+2025-10-31T16:35:00.2451124Z export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+2025-10-31T16:35:00.2451187Z if [ -z "$PORT" ]; then
+2025-10-31T16:35:00.2451243Z 		export PORT=8080
+2025-10-31T16:35:00.2451290Z fi
+2025-10-31T16:35:00.2451336Z 
+2025-10-31T16:35:00.2451450Z PATH="$PATH:/home/site/wwwroot" npx prisma migrate deploy && npm start
+2025-10-31T16:35:07.1728936Z npm info using npm@10.9.2
+2025-10-31T16:35:07.1832829Z npm info using node@v22.17.0
+2025-10-31T16:35:44.2874576Z Prisma schema loaded from prisma/schema.prisma
+2025-10-31T16:35:44.4761435Z Datasource "db": PostgreSQL database "sharedthread", schema "public" at "sharedthread-db.postgres.database.azure.com"
+2025-10-31T16:35:46.8786663Z 
+2025-10-31T16:35:46.8867777Z 7 migrations found in prisma/migrations
+2025-10-31T16:35:46.8868033Z 
+2025-10-31T16:35:48.1364207Z 
+2025-10-31T16:35:48.1530398Z No pending migrations to apply.
+2025-10-31T16:35:48.3186210Z npm http fetch GET 200 https://registry.npmjs.org/npm 2237ms
+2025-10-31T16:35:48.3361379Z npm notice
+2025-10-31T16:35:48.3361594Z npm notice New major version of npm available! 10.9.2 -> 11.6.2
+2025-10-31T16:35:48.3361813Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-10-31T16:35:48.3361848Z npm notice To update run: npm install -g npm@11.6.2
+2025-10-31T16:35:48.3361882Z npm notice
+2025-10-31T16:35:48.3361909Z npm info ok
+2025-10-31T16:35:49.5501987Z npm info using npm@10.9.2
+2025-10-31T16:35:49.5502543Z npm info using node@v22.17.0
+2025-10-31T16:35:49.7960507Z 
+2025-10-31T16:35:49.7961482Z > shared-thread@0.1.0 start
+2025-10-31T16:35:49.7961543Z > next start -p ${PORT:-3000}
+2025-10-31T16:35:49.7961572Z 
+2025-10-31T16:35:52.8290280Z    ▲ Next.js 15.5.6
+2025-10-31T16:35:52.8299590Z    - Local:        http://localhost:8080
+2025-10-31T16:35:52.8302555Z    - Network:      http://169.254.130.2:8080
+2025-10-31T16:35:52.8363299Z 
+2025-10-31T16:35:52.8367451Z  ✓ Starting...
+2025-10-31T16:36:00.8731581Z  ✓ Ready in 10s

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>9e3c412d-4ace-464f-b8a6-9e080638f0c8</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"7d12e36e6c1c35fc45238d2c5785dd64a6fce8d6","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"feat: implement NextAuth.js + Keycloak OAuth authentication\n\n- Replace custom JWT auth with NextAuth.js + Keycloak OAuth\n- Add Keycloak provider with production server at gate.sharedthread.co\n- Update Prisma schema for NextAuth compatibility\n- Convert sign-in page to use Keycloak OAuth\n- Add session management with admin role assignment\n- Configure environment variables for production deployment\n\nThis migration provides secure, production-ready OAuth authentication\nwith self-hosted Keycloak server for complete control and security."}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-11-01T10:14:00.2093086Z</lastSuccessEndTime>
+  <receivedTime>2025-11-01T10:13:56.6274062Z</receivedTime>
+  <startTime>2025-11-01T10:13:58.2013889Z</startTime>
+  <endTime>2025-11-01T10:14:00.2093086Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

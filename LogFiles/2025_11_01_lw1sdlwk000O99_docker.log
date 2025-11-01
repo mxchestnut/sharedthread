@@ -1,0 +1,251 @@
+2025-11-01T10:14:08.2436273Z Container start method called.
+2025-11-01T10:14:08.2531614Z Establishing network.
+2025-11-01T10:14:08.2702138Z Pulling image: appsvc/node:22-lts_20250724.2.tuxprod.
+2025-11-01T10:14:09.0672478Z Container is starting.
+2025-11-01T10:14:09.0686135Z Establishing user namespace if not established already.
+2025-11-01T10:14:09.0687852Z Establishing network if not established already.
+2025-11-01T10:14:09.0734496Z Mounting volumes.
+2025-11-01T10:14:09.1123502Z Nested mountpoint site/wwwroot
+2025-11-01T10:14:09.2130285Z Nested mountpoint volatile/logs
+2025-11-01T10:14:09.2703887Z Nested mountpoint 
+2025-11-01T10:14:09.3347666Z Nested mountpoint 
+2025-11-01T10:14:09.3710117Z Nested mountpoint 
+2025-11-01T10:14:09.3899138Z Nested mountpoint 
+2025-11-01T10:14:25.6150139Z Creating container.
+2025-11-01T10:14:25.6209807Z Creating pipes for streaming container io.
+2025-11-01T10:14:25.6220036Z Creating stdout named pipe at /podr/container/pipe/7a3b19953075_sharedthread/stdout_43449876a2c24a3ba4eca17ea11f4efd.
+2025-11-01T10:14:25.6319213Z Successfully created stdout named pipe at: /podr/container/pipe/7a3b19953075_sharedthread/stdout_43449876a2c24a3ba4eca17ea11f4efd.
+2025-11-01T10:14:25.6339782Z Opening named pipe /podr/container/pipe/7a3b19953075_sharedthread/stdout_43449876a2c24a3ba4eca17ea11f4efd for reading in non-blocking mode.
+2025-11-01T10:14:25.6405350Z Successfully opened named pipe: /podr/container/pipe/7a3b19953075_sharedthread/stdout_43449876a2c24a3ba4eca17ea11f4efd.
+2025-11-01T10:14:25.6486099Z Successfully removed non-blocking flag from /podr/container/pipe/7a3b19953075_sharedthread/stdout_43449876a2c24a3ba4eca17ea11f4efd.
+2025-11-01T10:14:25.6501708Z Creating stderr named pipe at /podr/container/pipe/7a3b19953075_sharedthread/stderr_719d21fdf7e5483da0449ab70d8bc4ce.
+2025-11-01T10:14:25.6515309Z Successfully created stderr named pipe at: /podr/container/pipe/7a3b19953075_sharedthread/stderr_719d21fdf7e5483da0449ab70d8bc4ce.
+2025-11-01T10:14:25.6591729Z Opening named pipe /podr/container/pipe/7a3b19953075_sharedthread/stderr_719d21fdf7e5483da0449ab70d8bc4ce for reading in non-blocking mode.
+2025-11-01T10:14:25.6599948Z Successfully opened named pipe: /podr/container/pipe/7a3b19953075_sharedthread/stderr_719d21fdf7e5483da0449ab70d8bc4ce.
+2025-11-01T10:14:25.6610366Z Successfully removed non-blocking flag from /podr/container/pipe/7a3b19953075_sharedthread/stderr_719d21fdf7e5483da0449ab70d8bc4ce.
+2025-11-01T10:14:25.6694729Z Creating container with image: appsvc/node:22-lts_20250724.2.tuxprod from registry: 10.1.0.5:13209 and fully qualified image name: 10.1.0.5:13209/appsvc/node:22-lts_20250724.2.tuxprod
+2025-11-01T10:14:26.9275946Z Starting container: 7a3b19953075_sharedthread.
+2025-11-01T10:14:27.2606790Z Starting watchers and probes.
+2025-11-01T10:14:27.2829256Z Starting metrics collection.
+2025-11-01T10:14:27.3004854Z Container is running.
+2025-11-01T10:14:28.0009101Z Container start method finished after 19737 ms.
+2025-11-01T10:16:04.4433752Z Site startup probe succeeded after 96.0744345 seconds.
+2025-11-01T10:16:06.3328110Z Site is running with deployment version: 9e3c412d-4ace-464f-b8a6-9e080638f0c8
+2025-11-01T10:16:06.3643590Z Site started.
+2025-11-01T10:16:06.4042931Z Site is running with patch version NODE 22.17.0
+2025-11-01T10:16:26.9103914Z Container is terminating. Grace period: 5 seconds.
+2025-11-01T10:16:27.0449131Z Stop and delete container. Retry count = 0
+2025-11-01T10:16:27.0532257Z Stopping container: be95574d83fc_sharedthread.
+2025-11-01T10:16:32.4883958Z Deleting container: be95574d83fc_sharedthread. Retry count = 0
+2025-11-01T10:16:33.0650578Z Container spec TerminationMessagePolicy  path 
+2025-11-01T10:16:33.0805208Z Container is terminated. Total time elapsed: 6158 ms.
+2025-11-01T10:16:33.2457211Z Site: sharedthread stopped.
+2025-11-01T10:21:53.0435203Z Container start method called.
+2025-11-01T10:21:53.0728196Z Establishing network.
+2025-11-01T10:21:53.0895120Z Pulling image: appsvc/node:22-lts_20250724.2.tuxprod.
+2025-11-01T10:21:55.3047972Z Container is starting.
+2025-11-01T10:21:55.3105319Z Establishing user namespace if not established already.
+2025-11-01T10:21:55.3184351Z Establishing network if not established already.
+2025-11-01T10:21:55.3188818Z Mounting volumes.
+2025-11-01T10:21:55.3370100Z Nested mountpoint site/wwwroot
+2025-11-01T10:21:55.4335198Z Nested mountpoint volatile/logs
+2025-11-01T10:21:55.4699404Z Nested mountpoint 
+2025-11-01T10:21:55.6215902Z Nested mountpoint 
+2025-11-01T10:21:55.7055358Z Nested mountpoint 
+2025-11-01T10:21:55.7257842Z Nested mountpoint 
+2025-11-01T10:22:28.9502274Z Creating container.
+2025-11-01T10:22:28.9678938Z Creating pipes for streaming container io.
+2025-11-01T10:22:28.9696231Z Creating stdout named pipe at /podr/container/pipe/b7f217b74e66_sharedthread/stdout_7af276eeb2cc410c82af56f9a66475c0.
+2025-11-01T10:22:28.9784870Z Successfully created stdout named pipe at: /podr/container/pipe/b7f217b74e66_sharedthread/stdout_7af276eeb2cc410c82af56f9a66475c0.
+2025-11-01T10:22:28.9788816Z Opening named pipe /podr/container/pipe/b7f217b74e66_sharedthread/stdout_7af276eeb2cc410c82af56f9a66475c0 for reading in non-blocking mode.
+2025-11-01T10:22:28.9790825Z Successfully opened named pipe: /podr/container/pipe/b7f217b74e66_sharedthread/stdout_7af276eeb2cc410c82af56f9a66475c0.
+2025-11-01T10:22:28.9792229Z Successfully removed non-blocking flag from /podr/container/pipe/b7f217b74e66_sharedthread/stdout_7af276eeb2cc410c82af56f9a66475c0.
+2025-11-01T10:22:28.9793395Z Creating stderr named pipe at /podr/container/pipe/b7f217b74e66_sharedthread/stderr_b9f0e95a123843cc98fabeae0d9b2d25.
+2025-11-01T10:22:28.9795019Z Successfully created stderr named pipe at: /podr/container/pipe/b7f217b74e66_sharedthread/stderr_b9f0e95a123843cc98fabeae0d9b2d25.
+2025-11-01T10:22:28.9796146Z Opening named pipe /podr/container/pipe/b7f217b74e66_sharedthread/stderr_b9f0e95a123843cc98fabeae0d9b2d25 for reading in non-blocking mode.
+2025-11-01T10:22:28.9797275Z Successfully opened named pipe: /podr/container/pipe/b7f217b74e66_sharedthread/stderr_b9f0e95a123843cc98fabeae0d9b2d25.
+2025-11-01T10:22:28.9798276Z Successfully removed non-blocking flag from /podr/container/pipe/b7f217b74e66_sharedthread/stderr_b9f0e95a123843cc98fabeae0d9b2d25.
+2025-11-01T10:22:28.9888823Z Creating container with image: appsvc/node:22-lts_20250724.2.tuxprod from registry: 10.1.0.5:13209 and fully qualified image name: 10.1.0.5:13209/appsvc/node:22-lts_20250724.2.tuxprod
+2025-11-01T10:22:31.9760176Z Starting container: b7f217b74e66_sharedthread.
+2025-11-01T10:22:32.3096640Z Starting watchers and probes.
+2025-11-01T10:22:32.3581602Z Starting metrics collection.
+2025-11-01T10:22:32.3690576Z Container is running.
+2025-11-01T10:22:33.7592915Z Container start method finished after 40715 ms.
+2025-11-01T10:24:19.9036167Z Site startup probe succeeded after 106.000708 seconds.
+2025-11-01T10:24:20.6887215Z Site is running with deployment version: 3480c37c-e286-4304-87ba-b20459c4b113
+2025-11-01T10:24:20.7363285Z Site started.
+2025-11-01T10:24:20.7898183Z Site is running with patch version NODE 22.17.0
+2025-11-01T10:24:41.3284505Z Container is terminating. Grace period: 5 seconds.
+2025-11-01T10:24:41.4243869Z Stop and delete container. Retry count = 0
+2025-11-01T10:24:41.4295954Z Stopping container: 7a3b19953075_sharedthread.
+2025-11-01T10:24:46.8076028Z Deleting container: 7a3b19953075_sharedthread. Retry count = 0
+2025-11-01T10:24:47.4879698Z Container spec TerminationMessagePolicy  path 
+2025-11-01T10:24:47.4977001Z Container is terminated. Total time elapsed: 6165 ms.
+2025-11-01T10:24:47.4989359Z Site: sharedthread stopped.
+2025-11-01T10:39:07.5948117Z Container start method called.
+2025-11-01T10:39:07.6059620Z Establishing network.
+2025-11-01T10:39:07.6070227Z Pulling image: appsvc/node:22-lts_20250724.2.tuxprod.
+2025-11-01T10:39:08.4460851Z Container is starting.
+2025-11-01T10:39:08.4518981Z Establishing user namespace if not established already.
+2025-11-01T10:39:08.4525165Z Establishing network if not established already.
+2025-11-01T10:39:08.4531930Z Mounting volumes.
+2025-11-01T10:39:08.4664719Z Nested mountpoint site/wwwroot
+2025-11-01T10:39:08.5379910Z Nested mountpoint volatile/logs
+2025-11-01T10:39:08.5705756Z Nested mountpoint 
+2025-11-01T10:39:08.6450794Z Nested mountpoint 
+2025-11-01T10:39:08.6828057Z Nested mountpoint 
+2025-11-01T10:39:08.7708694Z Nested mountpoint 
+2025-11-01T10:39:21.6450182Z Creating container.
+2025-11-01T10:39:21.6452506Z Creating pipes for streaming container io.
+2025-11-01T10:39:21.6511152Z Creating stdout named pipe at /podr/container/pipe/5f3e77a3d758_sharedthread/stdout_627706c59b0f4dd893c04e191eee8c8d.
+2025-11-01T10:39:21.6604807Z Successfully created stdout named pipe at: /podr/container/pipe/5f3e77a3d758_sharedthread/stdout_627706c59b0f4dd893c04e191eee8c8d.
+2025-11-01T10:39:21.6618180Z Opening named pipe /podr/container/pipe/5f3e77a3d758_sharedthread/stdout_627706c59b0f4dd893c04e191eee8c8d for reading in non-blocking mode.
+2025-11-01T10:39:21.6625298Z Successfully opened named pipe: /podr/container/pipe/5f3e77a3d758_sharedthread/stdout_627706c59b0f4dd893c04e191eee8c8d.
+2025-11-01T10:39:21.6702595Z Successfully removed non-blocking flag from /podr/container/pipe/5f3e77a3d758_sharedthread/stdout_627706c59b0f4dd893c04e191eee8c8d.
+2025-11-01T10:39:21.6714315Z Creating stderr named pipe at /podr/container/pipe/5f3e77a3d758_sharedthread/stderr_b2c625f2b4554477b0d4ec7173e1d26c.
+2025-11-01T10:39:21.6723833Z Successfully created stderr named pipe at: /podr/container/pipe/5f3e77a3d758_sharedthread/stderr_b2c625f2b4554477b0d4ec7173e1d26c.
+2025-11-01T10:39:21.6730574Z Opening named pipe /podr/container/pipe/5f3e77a3d758_sharedthread/stderr_b2c625f2b4554477b0d4ec7173e1d26c for reading in non-blocking mode.
+2025-11-01T10:39:21.6812467Z Successfully opened named pipe: /podr/container/pipe/5f3e77a3d758_sharedthread/stderr_b2c625f2b4554477b0d4ec7173e1d26c.
+2025-11-01T10:39:21.6816196Z Successfully removed non-blocking flag from /podr/container/pipe/5f3e77a3d758_sharedthread/stderr_b2c625f2b4554477b0d4ec7173e1d26c.
+2025-11-01T10:39:21.6828343Z Creating container with image: appsvc/node:22-lts_20250724.2.tuxprod from registry: 10.1.0.6:13209 and fully qualified image name: 10.1.0.6:13209/appsvc/node:22-lts_20250724.2.tuxprod
+2025-11-01T10:39:23.0015550Z Starting container: 5f3e77a3d758_sharedthread.
+2025-11-01T10:39:23.1710542Z Starting watchers and probes.
+2025-11-01T10:39:23.2090688Z Starting metrics collection.
+2025-11-01T10:39:23.2109543Z Container is running.
+2025-11-01T10:39:23.6385428Z Container start method finished after 15996 ms.
+2025-11-01T10:40:39.1506599Z Site startup probe succeeded after 75.3701077 seconds.
+2025-11-01T10:40:39.8105924Z Site is running with deployment version: ed64a73c-2de1-409f-abb0-036abfc5b632
+2025-11-01T10:40:39.8257787Z Site started.
+2025-11-01T10:40:39.8472540Z Site is running with patch version NODE 22.17.0
+2025-11-01T10:41:00.2757564Z Container is terminating. Grace period: 5 seconds.
+2025-11-01T10:41:00.3601375Z Stop and delete container. Retry count = 0
+2025-11-01T10:41:00.3622097Z Stopping container: b7f217b74e66_sharedthread.
+2025-11-01T10:41:06.1305439Z Deleting container: b7f217b74e66_sharedthread. Retry count = 0
+2025-11-01T10:41:06.7309723Z Container spec TerminationMessagePolicy  path 
+2025-11-01T10:41:06.7603342Z Container is terminated. Total time elapsed: 6474 ms.
+2025-11-01T10:41:06.7796079Z Site: sharedthread stopped.
+2025-11-01T10:44:39.1085394Z Container start method called.
+2025-11-01T10:44:39.1457184Z Establishing network.
+2025-11-01T10:44:39.1464145Z Pulling image: appsvc/node:22-lts_20250724.2.tuxprod.
+2025-11-01T10:44:41.0093002Z Container is starting.
+2025-11-01T10:44:41.0112178Z Establishing user namespace if not established already.
+2025-11-01T10:44:41.0114086Z Establishing network if not established already.
+2025-11-01T10:44:41.0289354Z Mounting volumes.
+2025-11-01T10:44:41.0395213Z Nested mountpoint site/wwwroot
+2025-11-01T10:44:41.1875962Z Nested mountpoint volatile/logs
+2025-11-01T10:44:41.2260745Z Nested mountpoint 
+2025-11-01T10:44:41.2531299Z Nested mountpoint 
+2025-11-01T10:44:41.4159440Z Nested mountpoint 
+2025-11-01T10:44:41.4178358Z Nested mountpoint 
+2025-11-01T10:45:03.8814321Z Creating container.
+2025-11-01T10:45:03.8816439Z Creating pipes for streaming container io.
+2025-11-01T10:45:03.9078616Z Creating stdout named pipe at /podr/container/pipe/5a7d241527ec_sharedthread/stdout_2349b5891e3442eba6d433065a0a6914.
+2025-11-01T10:45:03.9102943Z Successfully created stdout named pipe at: /podr/container/pipe/5a7d241527ec_sharedthread/stdout_2349b5891e3442eba6d433065a0a6914.
+2025-11-01T10:45:03.9204637Z Opening named pipe /podr/container/pipe/5a7d241527ec_sharedthread/stdout_2349b5891e3442eba6d433065a0a6914 for reading in non-blocking mode.
+2025-11-01T10:45:03.9207705Z Successfully opened named pipe: /podr/container/pipe/5a7d241527ec_sharedthread/stdout_2349b5891e3442eba6d433065a0a6914.
+2025-11-01T10:45:03.9208951Z Successfully removed non-blocking flag from /podr/container/pipe/5a7d241527ec_sharedthread/stdout_2349b5891e3442eba6d433065a0a6914.
+2025-11-01T10:45:03.9266240Z Creating stderr named pipe at /podr/container/pipe/5a7d241527ec_sharedthread/stderr_48b65087be3b49b0bba16bc818c41019.
+2025-11-01T10:45:03.9291339Z Successfully created stderr named pipe at: /podr/container/pipe/5a7d241527ec_sharedthread/stderr_48b65087be3b49b0bba16bc818c41019.
+2025-11-01T10:45:03.9687803Z Opening named pipe /podr/container/pipe/5a7d241527ec_sharedthread/stderr_48b65087be3b49b0bba16bc818c41019 for reading in non-blocking mode.
+2025-11-01T10:45:03.9952180Z Successfully opened named pipe: /podr/container/pipe/5a7d241527ec_sharedthread/stderr_48b65087be3b49b0bba16bc818c41019.
+2025-11-01T10:45:03.9954607Z Successfully removed non-blocking flag from /podr/container/pipe/5a7d241527ec_sharedthread/stderr_48b65087be3b49b0bba16bc818c41019.
+2025-11-01T10:45:03.9956675Z Creating container with image: appsvc/node:22-lts_20250724.2.tuxprod from registry: 10.1.0.5:13209 and fully qualified image name: 10.1.0.5:13209/appsvc/node:22-lts_20250724.2.tuxprod
+2025-11-01T10:45:06.2333114Z Starting container: 5a7d241527ec_sharedthread.
+2025-11-01T10:45:06.4521437Z Starting watchers and probes.
+2025-11-01T10:45:06.4533663Z Starting metrics collection.
+2025-11-01T10:45:06.4535873Z Container is running.
+2025-11-01T10:45:07.3412720Z Container start method finished after 28188 ms.
+2025-11-01T10:45:12.9736355Z Site startup probe failed after 5.5363892 seconds.
+2025-11-01T10:45:14.4889324Z Failed to start site. Revert by stopping site.
+2025-11-01T10:45:14.4997051Z Container is terminating. Grace period: 5 seconds.
+2025-11-01T10:45:14.6789926Z Stop and delete container. Retry count = 0
+2025-11-01T10:45:14.6881506Z Stopping container: 5a7d241527ec_sharedthread.
+2025-11-01T10:45:19.7112170Z Deleting container: 5a7d241527ec_sharedthread. Retry count = 0
+2025-11-01T10:45:19.9265338Z Container spec TerminationMessagePolicy  path 
+2025-11-01T10:45:19.9273812Z Container is terminated. Total time elapsed: 5426 ms.
+2025-11-01T10:45:19.9291885Z Site container: sharedthread terminated during site startup.
+2025-11-01T10:45:20.0062569Z Site: sharedthread stopped.
+2025-11-01T10:45:42.1972315Z Container is terminating. Grace period: 5 seconds.
+2025-11-01T10:45:42.2162231Z Stop and delete container. Retry count = 0
+2025-11-01T10:45:42.2164191Z Stopping container: 5f3e77a3d758_sharedthread.
+2025-11-01T10:45:48.3404931Z Deleting container: 5f3e77a3d758_sharedthread. Retry count = 0
+2025-11-01T10:45:49.4176238Z Container spec TerminationMessagePolicy  path 
+2025-11-01T10:45:49.4178679Z Container is terminated. Total time elapsed: 7220 ms.
+2025-11-01T10:45:49.4248079Z Site: sharedthread stopped.
+2025-11-01T10:46:12.9182318Z Container start method called.
+2025-11-01T10:46:12.9184673Z Establishing network.
+2025-11-01T10:46:12.9186017Z Pulling image: appsvc/node:22-lts_20250724.2.tuxprod.
+2025-11-01T10:46:13.2661938Z Container is starting.
+2025-11-01T10:46:13.2738208Z Establishing user namespace if not established already.
+2025-11-01T10:46:13.2788068Z Establishing network if not established already.
+2025-11-01T10:46:13.2828040Z Mounting volumes.
+2025-11-01T10:46:13.2845669Z Nested mountpoint site/wwwroot
+2025-11-01T10:46:13.3303025Z Nested mountpoint volatile/logs
+2025-11-01T10:46:13.3408202Z Nested mountpoint 
+2025-11-01T10:46:13.3491822Z Nested mountpoint 
+2025-11-01T10:46:13.3663416Z Nested mountpoint 
+2025-11-01T10:46:13.3672443Z Nested mountpoint 
+2025-11-01T10:46:28.1943105Z Creating container.
+2025-11-01T10:46:28.1956000Z Creating pipes for streaming container io.
+2025-11-01T10:46:28.2033360Z Creating stdout named pipe at /podr/container/pipe/de96de422c8a_sharedthread/stdout_23775736c448449886fd032b39e747c6.
+2025-11-01T10:46:28.2109827Z Successfully created stdout named pipe at: /podr/container/pipe/de96de422c8a_sharedthread/stdout_23775736c448449886fd032b39e747c6.
+2025-11-01T10:46:28.2122022Z Opening named pipe /podr/container/pipe/de96de422c8a_sharedthread/stdout_23775736c448449886fd032b39e747c6 for reading in non-blocking mode.
+2025-11-01T10:46:28.2140733Z Successfully opened named pipe: /podr/container/pipe/de96de422c8a_sharedthread/stdout_23775736c448449886fd032b39e747c6.
+2025-11-01T10:46:28.2207038Z Successfully removed non-blocking flag from /podr/container/pipe/de96de422c8a_sharedthread/stdout_23775736c448449886fd032b39e747c6.
+2025-11-01T10:46:28.2211041Z Creating stderr named pipe at /podr/container/pipe/de96de422c8a_sharedthread/stderr_5e4097899ad742fabfdd0f9424f09d17.
+2025-11-01T10:46:28.2224179Z Successfully created stderr named pipe at: /podr/container/pipe/de96de422c8a_sharedthread/stderr_5e4097899ad742fabfdd0f9424f09d17.
+2025-11-01T10:46:28.2230702Z Opening named pipe /podr/container/pipe/de96de422c8a_sharedthread/stderr_5e4097899ad742fabfdd0f9424f09d17 for reading in non-blocking mode.
+2025-11-01T10:46:28.2235539Z Successfully opened named pipe: /podr/container/pipe/de96de422c8a_sharedthread/stderr_5e4097899ad742fabfdd0f9424f09d17.
+2025-11-01T10:46:28.2312764Z Successfully removed non-blocking flag from /podr/container/pipe/de96de422c8a_sharedthread/stderr_5e4097899ad742fabfdd0f9424f09d17.
+2025-11-01T10:46:28.2325950Z Creating container with image: appsvc/node:22-lts_20250724.2.tuxprod from registry: 10.1.0.6:13209 and fully qualified image name: 10.1.0.6:13209/appsvc/node:22-lts_20250724.2.tuxprod
+2025-11-01T10:46:29.0477880Z Starting container: de96de422c8a_sharedthread.
+2025-11-01T10:46:29.2406252Z Starting watchers and probes.
+2025-11-01T10:46:29.2595990Z Starting metrics collection.
+2025-11-01T10:46:29.2746443Z Container is running.
+2025-11-01T10:46:29.6286254Z Container start method finished after 16710 ms.
+2025-11-01T10:48:07.3657487Z Site startup probe succeeded after 97.7221588 seconds.
+2025-11-01T10:48:07.7391430Z Site is running with deployment version: ed64a73c-2de1-409f-abb0-036abfc5b632
+2025-11-01T10:48:07.7448550Z Site started.
+2025-11-01T10:48:08.0603286Z Site is running with patch version NODE 22.17.0
+2025-11-01T11:00:29.0343127Z Container start method called.
+2025-11-01T11:00:29.0450757Z Establishing network.
+2025-11-01T11:00:29.0469003Z Pulling image: appsvc/node:22-lts_20250724.2.tuxprod.
+2025-11-01T11:00:30.1985236Z Container is starting.
+2025-11-01T11:00:30.2010720Z Establishing user namespace if not established already.
+2025-11-01T11:00:30.2176633Z Establishing network if not established already.
+2025-11-01T11:00:30.2180217Z Mounting volumes.
+2025-11-01T11:00:30.2315745Z Nested mountpoint site/wwwroot
+2025-11-01T11:00:30.3038841Z Nested mountpoint volatile/logs
+2025-11-01T11:00:30.3667080Z Nested mountpoint 
+2025-11-01T11:00:30.4258659Z Nested mountpoint 
+2025-11-01T11:00:30.5732986Z Nested mountpoint 
+2025-11-01T11:00:30.6497799Z Nested mountpoint 
+2025-11-01T11:00:48.1418381Z Creating container.
+2025-11-01T11:00:48.1831655Z Creating pipes for streaming container io.
+2025-11-01T11:00:48.1857811Z Creating stdout named pipe at /podr/container/pipe/973e30bf40ec_sharedthread/stdout_509fa9177dec4374abe8098dbc9beec3.
+2025-11-01T11:00:48.2115774Z Successfully created stdout named pipe at: /podr/container/pipe/973e30bf40ec_sharedthread/stdout_509fa9177dec4374abe8098dbc9beec3.
+2025-11-01T11:00:48.2120920Z Opening named pipe /podr/container/pipe/973e30bf40ec_sharedthread/stdout_509fa9177dec4374abe8098dbc9beec3 for reading in non-blocking mode.
+2025-11-01T11:00:48.2132583Z Successfully opened named pipe: /podr/container/pipe/973e30bf40ec_sharedthread/stdout_509fa9177dec4374abe8098dbc9beec3.
+2025-11-01T11:00:48.2300159Z Successfully removed non-blocking flag from /podr/container/pipe/973e30bf40ec_sharedthread/stdout_509fa9177dec4374abe8098dbc9beec3.
+2025-11-01T11:00:48.2303028Z Creating stderr named pipe at /podr/container/pipe/973e30bf40ec_sharedthread/stderr_2db977e6787a42f7b7ca6073e7db894a.
+2025-11-01T11:00:48.2305509Z Successfully created stderr named pipe at: /podr/container/pipe/973e30bf40ec_sharedthread/stderr_2db977e6787a42f7b7ca6073e7db894a.
+2025-11-01T11:00:48.2308507Z Opening named pipe /podr/container/pipe/973e30bf40ec_sharedthread/stderr_2db977e6787a42f7b7ca6073e7db894a for reading in non-blocking mode.
+2025-11-01T11:00:48.2310338Z Successfully opened named pipe: /podr/container/pipe/973e30bf40ec_sharedthread/stderr_2db977e6787a42f7b7ca6073e7db894a.
+2025-11-01T11:00:48.2311830Z Successfully removed non-blocking flag from /podr/container/pipe/973e30bf40ec_sharedthread/stderr_2db977e6787a42f7b7ca6073e7db894a.
+2025-11-01T11:00:48.2418487Z Creating container with image: appsvc/node:22-lts_20250724.2.tuxprod from registry: 10.1.0.5:13209 and fully qualified image name: 10.1.0.5:13209/appsvc/node:22-lts_20250724.2.tuxprod
+2025-11-01T11:00:50.9978228Z Starting container: 973e30bf40ec_sharedthread.
+2025-11-01T11:00:51.7989749Z Starting watchers and probes.
+2025-11-01T11:00:51.7998186Z Starting metrics collection.
+2025-11-01T11:00:51.8294991Z Container is running.
+2025-11-01T11:00:53.0588626Z Container start method finished after 24024 ms.
+2025-11-01T11:03:08.6780107Z Site startup probe succeeded after 135.4649407 seconds.
+2025-11-01T11:03:10.7248331Z Site is running with deployment version: 47c06a94-1e69-4000-9755-66003b5bbd43
+2025-11-01T11:03:11.0089101Z Site started.
+2025-11-01T11:03:11.2713542Z Site is running with patch version NODE 22.17.0
+2025-11-01T11:03:34.0052085Z Container is terminating. Grace period: 5 seconds.
+2025-11-01T11:03:34.3400326Z Stop and delete container. Retry count = 0
+2025-11-01T11:03:34.3483530Z Stopping container: de96de422c8a_sharedthread.
+2025-11-01T11:03:41.2219168Z Deleting container: de96de422c8a_sharedthread. Retry count = 0
+2025-11-01T11:03:42.3645169Z Container spec TerminationMessagePolicy  path 
+2025-11-01T11:03:42.3734957Z Container is terminated. Total time elapsed: 8344 ms.
+2025-11-01T11:03:42.3831345Z Site: sharedthread stopped.

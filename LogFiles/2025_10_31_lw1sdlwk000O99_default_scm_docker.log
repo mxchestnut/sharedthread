@@ -1276,3 +1276,36 @@
 2025-10-31T15:02:16.7990177Z Now listening on: http://0.0.0.0:8181
 2025-10-31T15:02:16.7993659Z Application started. Press Ctrl+C to shut down.
 2025-10-31T15:03:44.0836907Z Deploy Async
+2025-10-31T15:19:57.5364861Z     __ __          __      __    _ __     
+2025-10-31T15:19:57.5536713Z    / //_/_  _ ____/ /_  __/ /   (_) /____ 
+2025-10-31T15:19:57.5536939Z   / ,< / / / / __  / / / / /   / / __/ _  
+2025-10-31T15:19:57.5536980Z  / /| / /_/ / /_/ / /_/ / /___/ / /_/  __/
+2025-10-31T15:19:57.5537013Z /_/ |_\__,_/\__,_/\__,_/_____/_/\__/\___/ 
+2025-10-31T15:19:57.5537038Z 
+2025-10-31T15:19:57.5537083Z                                           
+2025-10-31T15:19:57.5537177Z DEBUG CONSOLE | AZURE APP SERVICE ON LINUX
+2025-10-31T15:19:57.5537203Z 
+2025-10-31T15:19:57.5537228Z Documentation: http://aka.ms/webapp-linux
+2025-10-31T15:19:57.5537259Z Kudu Version : 20250917.3
+2025-10-31T15:19:57.5537288Z Commit       : 915b72833717358dab58b9a5b15812c44b8842d3
+2025-10-31T15:19:57.5537313Z 
+2025-10-31T15:19:59.5161754Z chown: changing ownership of '/temp': Operation not permitted
+2025-10-31T15:19:59.5162261Z chmod: changing permissions of '/temp': Operation not permitted
+2025-10-31T15:20:07.6507581Z Restarting OpenBSD Secure Shell server: sshd.
+2025-10-31T15:20:07.9453354Z node not running, starting node /opt/webssh/index.js
+2025-10-31T15:20:36.9143935Z Fri Oct 31 15:20:36 UTC 2025 running .net core
+2025-10-31T15:20:40.1476619Z Startup : 03.20.40.088488
+2025-10-31T15:20:40.2753197Z Configure Services : 03.20.40.274461
+2025-10-31T15:20:41.9473674Z Configure : 03.20.41.936964
+2025-10-31T15:20:43.9051181Z Setting Up Routes : 03.20.43.904864
+2025-10-31T15:20:46.6456028Z Exiting Configure : 03.20.46.643386
+2025-10-31T15:20:47.7497670Z Hosting environment: Production
+2025-10-31T15:20:47.7498253Z Content root path: /opt/Kudu
+2025-10-31T15:20:47.7498298Z Now listening on: http://0.0.0.0:8181
+2025-10-31T15:20:47.7498347Z Application started. Press Ctrl+C to shut down.
+2025-10-31T15:24:31.1410643Z Deploy Async
+2025-10-31T15:30:52.3698524Z Deploy Async
+2025-10-31T15:34:59.8521844Z Deploy Async
+2025-10-31T15:38:48.6437785Z warn: Microsoft.AspNetCore.Server.Kestrel[22]
+2025-10-31T15:38:48.6446766Z       As of "10/31/2025 15:38:44 +00:00", the heartbeat has been running for "00:00:01.1493636" which is longer than "00:00:01". This could be caused by thread pool starvation.
+2025-10-31T16:33:26.9473239Z Deploy Async

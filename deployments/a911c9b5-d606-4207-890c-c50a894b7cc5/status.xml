@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>a911c9b5-d606-4207-890c-c50a894b7cc5</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"fc24e3d7284f17f4c32f5f610c7498b5d5d20425","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"Fix double 's' in Prisma model names\n\nCritical fix for auth.ts:\n- Fixed prisma.userss back to prisma.users in authenticateUser function\n- Previous global find/replace went too far and created userss\n- This was causing the login 'findUnique' error in production\n\nResolves: Cannot read properties of undefined (reading 'findUnique')"}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-10-31T16:33:33.0884826Z</lastSuccessEndTime>
+  <receivedTime>2025-10-31T16:33:27.2871311Z</receivedTime>
+  <startTime>2025-10-31T16:33:30.5819708Z</startTime>
+  <endTime>2025-10-31T16:33:33.0884826Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

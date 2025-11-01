@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>d1702a28-1631-43f1-8602-1c9c747b94cb</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"75c39cbb7ae1e6103e04c66ba22161e0f9753894","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"Add simple Prisma debug endpoint\n\nTests step-by-step:\n- Import @prisma/client\n- Create instance\n- Check methods exist\n- Test connection\n- Simple query\n\nShould help isolate the 'Cannot read properties of undefined' error."}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-10-31T15:24:35.529924Z</lastSuccessEndTime>
+  <receivedTime>2025-10-31T15:24:31.2857258Z</receivedTime>
+  <startTime>2025-10-31T15:24:32.8163804Z</startTime>
+  <endTime>2025-10-31T15:24:35.529924Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>b141cb66-ebd0-401e-807b-b4b18af51be8</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"f490750ae21275f3c6d66a0931569e2e2d5b8c32","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"Add simple Prisma test endpoint at shallow route\n\nTesting:\n- Shallow route (/api/prisma-test vs /api/debug/*)\n- Simplified Prisma import and testing\n- Basic connection test with console logging\n\nThis will help isolate routing vs Prisma issues."}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-10-31T15:30:57.9301303Z</lastSuccessEndTime>
+  <receivedTime>2025-10-31T15:30:52.539593Z</receivedTime>
+  <startTime>2025-10-31T15:30:54.169515Z</startTime>
+  <endTime>2025-10-31T15:30:57.9301303Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>
