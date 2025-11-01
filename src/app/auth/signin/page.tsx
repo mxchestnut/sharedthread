@@ -9,8 +9,10 @@ export default function SignInPage() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    console.log('SignInPage mounted')
     // Check if already signed in
     getSession().then((session) => {
+      console.log('Current session:', session)
       if (session) {
         router.push('/library')
       }
@@ -18,13 +20,24 @@ export default function SignInPage() {
   }, [router])
 
   const handleKeycloakSignIn = async () => {
+    console.log('handleKeycloakSignIn called')
     setLoading(true)
     try {
-      await signIn('keycloak', { callbackUrl: '/library' })
+      console.log('Calling signIn...')
+      const result = await signIn('keycloak', { 
+        callbackUrl: '/library',
+        redirect: true 
+      })
+      console.log('signIn result:', result)
     } catch (error) {
       console.error('Sign in error:', error)
       setLoading(false)
     }
+  }
+
+  const handleDirectLink = () => {
+    console.log('Direct link clicked')
+    window.location.href = '/api/auth/signin/keycloak?callbackUrl=' + encodeURIComponent('https://sharedthread.co/library')
   }
 
   return (
@@ -55,9 +68,9 @@ export default function SignInPage() {
           </button>
           
           {/* Debug: Direct OAuth link */}
-          <a
-            href="/api/auth/signin/keycloak?callbackUrl=https%3A%2F%2Fsharedthread.co%2Flibrary"
-            className="w-full flex justify-center items-center gap-3 px-4 py-3 border border-blue-300 rounded-md shadow-sm text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          <button
+            onClick={handleDirectLink}
+            className="w-full flex justify-center items-center gap-3 px-4 py-3 border border-red-300 rounded-md shadow-sm text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
@@ -65,8 +78,16 @@ export default function SignInPage() {
                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
               />
             </svg>
-            Debug: Direct OAuth Link
-          </a>
+            🚨 DEBUG: Direct OAuth Link
+          </button>
+        </div>
+
+        {/* Debug Section */}
+        <div className="bg-gray-50 p-4 rounded-md text-xs">
+          <p><strong>Debug Info:</strong></p>
+          <p>Page loaded: {new Date().toLocaleTimeString()}</p>
+          <p>Loading state: {loading ? 'true' : 'false'}</p>
+          <p>Check browser console for detailed logs</p>
         </div>
 
         <div className="text-center">
