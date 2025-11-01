@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>59ffeac8-afe9-493d-b866-9debac6e801f</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"77ba0b86d9d7e43f1c5c00e09e5e2f627ab94ca7","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"debug: add environment variable check endpoint"}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-11-01T11:26:54.8333606Z</lastSuccessEndTime>
+  <receivedTime>2025-11-01T11:26:50.4045364Z</receivedTime>
+  <startTime>2025-11-01T11:26:52.3200908Z</startTime>
+  <endTime>2025-11-01T11:26:54.8333606Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

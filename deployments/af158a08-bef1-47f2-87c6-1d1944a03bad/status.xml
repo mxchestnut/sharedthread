@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>af158a08-bef1-47f2-87c6-1d1944a03bad</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"4d31fc14586039ca807d15fb62c5a40609ad60fd","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"remove debug endpoints"}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-11-01T11:40:13.9191645Z</lastSuccessEndTime>
+  <receivedTime>2025-11-01T11:40:10.4922316Z</receivedTime>
+  <startTime>2025-11-01T11:40:11.9973402Z</startTime>
+  <endTime>2025-11-01T11:40:13.9191645Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

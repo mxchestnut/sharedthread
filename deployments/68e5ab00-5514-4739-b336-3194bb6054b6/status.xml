@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>68e5ab00-5514-4739-b336-3194bb6054b6</id>
+  <author>N/A</author>
+  <deployer>GITHUB_ZIP_DEPLOY</deployer>
+  <authorEmail>N/A</authorEmail>
+  <message>{"type":"deployment","sha":"62105bda620c45fe1728d10af3ddb8cec563f08b","repoName":"mxchestnut/sharedthread","actor":"mxchestnut","slotName":"production","commitMessage":"debug: add direct OAuth link to test signin flow"}</message>
+  <progress></progress>
+  <status>Success</status>
+  <statusText></statusText>
+  <lastSuccessEndTime>2025-11-01T11:42:04.7354847Z</lastSuccessEndTime>
+  <receivedTime>2025-11-01T11:41:57.0139119Z</receivedTime>
+  <startTime>2025-11-01T11:42:00.0349613Z</startTime>
+  <endTime>2025-11-01T11:42:04.7354847Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>True</is_readonly>
+  <buildSummary />
+</deployment>

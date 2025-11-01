@@ -1,0 +1,9 @@
+2025-11-01T11:51:06.4301902Z,Updating submodules.,fc37b6d7-4b85-43bb-b7ae-7e65f3182c9d,0
+2025-11-01T11:51:07.6024771Z,Preparing deployment for commit id 'dfae6a0d-f'.,ebd74040-c230-4d6c-af66-5c30364679fa,0
+2025-11-01T11:51:07.9497742Z,PreDeployment: context.CleanOutputPath False,da0b9f24-9ec1-462b-955b-2f88e4a129ec,0
+2025-11-01T11:51:08.1763100Z,PreDeployment: context.OutputPath /home/site/wwwroot,b9b6872f-3712-4014-b068-c8a2c65c1bd3,0
+2025-11-01T11:51:08.3529435Z,Skipping build. Project type: Run-From-Zip,61327ecc-c2a8-4cf1-bd7a-3e42286f862e,0
+2025-11-01T11:51:08.5036793Z,Skipping post build. Project type: Run-From-Zip,e6bf409a-2bf9-4963-8df7-b0fe495c95d5,0
+2025-11-01T11:51:08.6157940Z,Triggering recycle (preview mode disabled).,70bcae21-81e7-4bbe-ada0-229ba2fce06f,0
+2025-11-01T11:51:08.9089562Z,Updating /home/data/SitePackages/packagename.txt with deployment 20251101115003.zip,a01a7eb4-4323-4217-8764-23fb6c2ad97d,0
+2025-11-01T11:51:09.1499979Z,Deployment successful. deployer = GITHUB_ZIP_DEPLOY deploymentPath = ZipDeploy. Run from package. Ignore remote build.,e91abd6f-1af2-4b2f-9ebc-265952a7d010,0
