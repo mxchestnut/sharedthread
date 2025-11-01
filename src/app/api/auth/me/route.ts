@@ -1,20 +1,21 @@
 import { NextResponse } from 'next/server';
-import { getCurrentUser } from '@/lib/auth';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/lib/prisma';
 import { logError } from '@/lib/error-logger';
 
 
 export async function GET() {
   try {
-    const user = await getCurrentUser();
+    const session = await getServerSession(authOptions);
     
-    if (!user) {
+    if (!session?.user?.email) {
       return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
     }
 
-    // Get additional user data with counts for profile page
+    // Get user data from database using email from session
     const fullUser = await prisma.users.findUnique({
-      where: { id: user.id },
+      where: { email: session.user.email },
       select: {
         id: true,
         username: true,
