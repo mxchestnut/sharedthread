@@ -1,13 +1,41 @@
 'use client';
 
-import { useState, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { signIn } from 'next-auth/react';
 
-function LoginContent() {
+export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const searchParams = useSearchParams();
-  const error = searchParams.get('error');
+  const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Parse URL parameters on client side
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const errorParam = urlParams.get('error');
+      const messageParam = urlParams.get('message');
+      
+      if (errorParam) {
+        if (errorParam === 'Callback') {
+          setError('There was an error during the authentication process. Please try again.');
+        } else if (errorParam === 'AccessDenied') {
+          setError('Access denied. You may not have permission to access this application.');
+        } else {
+          setError(`Authentication error: ${errorParam}`);
+        }
+      }
+
+      if (messageParam) {
+        if (messageParam === 'signup_success') {
+          setSuccessMessage('Account created successfully! Please sign in to continue.');
+        } else if (messageParam === 'waitlist') {
+          setSuccessMessage('Thank you for signing up! Your account is on the waitlist because you are under 18. We\'ll notify you when you can access the platform.');
+        } else if (messageParam === 'account_exists') {
+          setSuccessMessage('An account with this email or phone already exists. Please sign in.');
+        }
+      }
+    }
+  }, []);
 
   const handleKeycloakSignIn = async () => {
     setIsLoading(true);
@@ -22,42 +50,18 @@ function LoginContent() {
       
       if (result?.error) {
         console.error('Sign-in error:', result.error);
+        setError(`Sign-in failed: ${result.error}`);
       } else if (result?.url) {
         console.log('Redirecting to:', result.url);
         window.location.href = result.url;
       }
     } catch (error) {
       console.error('Sign-in exception:', error);
+      setError('An unexpected error occurred during sign-in.');
     } finally {
       setIsLoading(false);
     }
   };
-
-  const getErrorMessage = () => {
-    if (error === 'Callback') {
-      return 'There was an error during the authentication process. Please try again.';
-    } else if (error === 'AccessDenied') {
-      return 'Access denied. You may not have permission to access this application.';
-    } else if (error) {
-      return `Authentication error: ${error}`;
-    }
-    return null;
-  };
-
-  const getSuccessMessage = () => {
-    const message = searchParams.get('message');
-    if (message === 'signup_success') {
-      return 'Account created successfully! Please sign in to continue.';
-    } else if (message === 'waitlist') {
-      return 'Thank you for signing up! Your account is on the waitlist because you are under 18. We\'ll notify you when you can access the platform.';
-    } else if (message === 'account_exists') {
-      return 'An account with this email or phone already exists. Please sign in.';
-    }
-    return null;
-  };
-
-  const successMessage = getSuccessMessage();
-  const errorMessage = getErrorMessage();
 
   return (
     <div className="min-h-screen bg-paper flex items-center justify-center px-4">
@@ -69,15 +73,15 @@ function LoginContent() {
 
         {/* Success Message */}
         {successMessage && (
-          <div className="mb-6 p-4 bg-success-light border border-success text-success-dark rounded-md">
+          <div className="mb-6 p-4 bg-green-50 border border-green-500 text-green-800 rounded-md">
             {successMessage}
           </div>
         )}
 
         {/* Error Message */}
-        {errorMessage && (
-          <div className="mb-6 p-4 bg-danger-light border border-danger text-danger-dark rounded-md">
-            {errorMessage}
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-500 text-red-800 rounded-md">
+            {error}
           </div>
         )}
 
@@ -137,20 +141,5 @@ function LoginContent() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function LoginPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-paper flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-ink">Shared Thread</h1>
-          <p className="text-support mt-2">Loading...</p>
-        </div>
-      </div>
-    }>
-      <LoginContent />
-    </Suspense>
   );
 }
