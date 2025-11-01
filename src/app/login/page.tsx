@@ -1,6 +1,39 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 export default function LoginPage() {
+  const [error, setError] = useState<string | null>(null);
+  const [debugInfo, setDebugInfo] = useState<string>('Loading...');
+
+  useEffect(() => {
+    // Parse URL parameters to check for errors
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const errorParam = urlParams.get('error');
+      
+      // Set debug info showing all URL parameters
+      const allParams = Array.from(urlParams.entries())
+        .map(([key, value]) => `${key}: ${value}`)
+        .join(', ');
+      
+      // Update states in a callback to avoid cascading renders
+      setTimeout(() => {
+        setDebugInfo(allParams || 'No URL parameters');
+        
+        if (errorParam) {
+          if (errorParam === 'Callback') {
+            setError('There was an error during the authentication process. Please try again.');
+          } else if (errorParam === 'AccessDenied') {
+            setError('Access denied. You may not have permission to access this application.');
+          } else {
+            setError(`Authentication error: ${errorParam}`);
+          }
+        }
+      }, 0);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-paper flex items-center justify-center px-4">
       <div className="max-w-md w-full">
@@ -8,6 +41,13 @@ export default function LoginPage() {
           <h1 className="text-2xl font-bold text-ink">Shared Thread</h1>
           <p className="text-support mt-2">Sign in to your account</p>
         </div>
+
+        {/* Error Message */}
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-500 text-red-800 rounded-md">
+            {error}
+          </div>
+        )}
 
         {/* Sign In Form */}
         <div className="bg-white rounded-lg shadow-sm border p-6">
@@ -23,16 +63,15 @@ export default function LoginPage() {
               Sign in with Keycloak
             </button>
 
-            {/* Debug Info (only in development) */}
-            {process.env.NODE_ENV === 'development' && (
-              <div className="mt-6 p-4 bg-gray-50 rounded-md">
-                <h3 className="text-sm font-medium text-gray-700 mb-2">Debug Info</h3>
-                <div className="text-xs text-gray-600 space-y-1">
-                  <div>Direct link to NextAuth Keycloak sign-in</div>
-                  <div>Callback URL: /library</div>
-                </div>
+            {/* Debug Info */}
+            <div className="mt-6 p-4 bg-gray-50 rounded-md">
+              <h3 className="text-sm font-medium text-gray-700 mb-2">Debug Info</h3>
+              <div className="text-xs text-gray-600 space-y-1">
+                <div>URL Parameters: {debugInfo}</div>
+                <div>Callback URL: /library</div>
+                <div>Error: {error || 'None'}</div>
               </div>
-            )}
+            </div>
           </div>
         </div>
 
