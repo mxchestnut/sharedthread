@@ -24,13 +24,37 @@ export const authOptions: NextAuthOptions = {
       return session
     },
     async signIn({ user, account, profile }) {
+      console.log('NextAuth signIn callback:', { 
+        userEmail: user.email, 
+        userName: user.name,
+        accountProvider: account?.provider,
+        profileEmail: profile?.email 
+      });
+      
       // Allow sign-in for your email, others need approval
       if (user.email === 'kitchestnut@hotmail.com') {
+        console.log('Admin user signing in');
         return true
       }
       
-      // For now, only allow your email (can change later)
-      return false
+      // Temporarily allow all users for debugging
+      console.log('Non-admin user signing in, allowing for debug');
+      return true
+      
+      // Original restrictive logic (commented out for debugging):
+      // return false
+    }
+  },
+  debug: true,
+  logger: {
+    error(code, metadata) {
+      console.error('NextAuth Error:', code, metadata);
+    },
+    warn(code) {
+      console.warn('NextAuth Warning:', code);
+    },
+    debug(code, metadata) {
+      console.log('NextAuth Debug:', code, metadata);
     }
   },
   pages: {
